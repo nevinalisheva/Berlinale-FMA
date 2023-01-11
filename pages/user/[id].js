@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "./UserProfile.module.css";
 import { useRouter } from "next/router";
-
 import axios from "axios";
-import { FiEdit2 } from "react-icons/fi";
 import dummyImage from "../../assets/dummy.jpg";
 import RentalDetailsCard from "../../components/RentalDetailsCard/RentalDetailsCard";
+import UserInfoCard from "../../components/UserInfoCard/UserInfoCard";
 
 function UserProfile() {
   const dummyUser = {
@@ -42,14 +41,7 @@ function UserProfile() {
   return (
     <div className={styles.container}>
       <h1>{userData.is_admin ? "Admin" : "User"} Profile</h1>
-      <div className={styles.profile_info}>
-        <div>
-          <div>{userData.name}</div>
-          <div>{userData.user_email}</div>
-          <div>{userData.info}</div>
-        </div>
-        <FiEdit2 className={styles.icon} />
-      </div>
+      <UserInfoCard data={userData} />
       <div className={styles.current_booking}>
         <h2>Your next rental</h2>
         <RentalDetailsCard data={userData.current_rental} />
