@@ -1,14 +1,14 @@
 .container {
   position: fixed;
   width: 100vw;
-  background-color: var(--nav-background);
+  background-color: var(--background);
   backdrop-filter: blur(10px);
   z-index: 5;
 }
 .shadow {
   box-shadow: 0 10px 30px -10px;
 }
-nav {
+.nav {
   display: flex;
   justify-content: space-between;
   position: relative;
@@ -17,7 +17,7 @@ nav {
 .menu {
   display: flex;
   justify-content: space-between;
-  color: var(--first-color);
+  color: var(--highlight-color);
 }
 .navigation {
   display: flex;
@@ -28,7 +28,7 @@ nav {
   z-index: 4;
 }
 .burger_logo {
-  color: var(--first-color);
+  color: var(--highlight-color);
   width: 2rem;
   height: 2rem;
 }
@@ -46,7 +46,7 @@ nav {
   transform: translateX(110vw);
   overflow-x: hidden;
   position: absolute;
-  background-color: var(--second-background);
+  background-color: rgb(216, 215, 215);
   z-index: 1;
   height: 100vh;
   position: fixed;
@@ -66,19 +66,9 @@ nav {
   height: 30vh;
   justify-content: space-around;
 }
-.links {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: var(--third-color);
-  text-decoration: none;
-  cursor: pointer;
-}
-.number {
-  color: var(--first-color);
-}
+
 @media (min-width: 768px) {
-  nav {
+  .nav {
     height: 4rem;
     flex-direction: row;
     justify-content: flex-end;
@@ -90,28 +80,25 @@ nav {
     display: none;
   }
   .menu {
+    width: 30vw;
     display: flex;
-    flex-direction: row;
+    justify-content: center;
     height: 4rem;
-    background-color: var(--first-background);
     transform: translateX(0vw);
     z-index: 4;
+    background-color: var(--background);
   }
   .menu.open {
     display: flex;
     width: auto;
     transform: translateX(0vw);
   }
-  ul {
-    display: flex;
-  }
   .link_list {
+    width: 100%;
+    display: flex;
     flex-direction: row;
+    justify-content: space-between;
     height: auto;
     margin: 0 3rem;
-  }
-  .links {
-    flex-direction: row;
-    margin-left: 2rem;
   }
 }
