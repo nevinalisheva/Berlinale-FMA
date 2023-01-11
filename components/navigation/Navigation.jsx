@@ -14,7 +14,10 @@ function Navigation() {
     <div className={styles.container}>
       <nav className={styles.nav}>
         <div className={styles.navigation}>
-          <AiOutlineCar className={styles.burger_logo} />
+          <Link href="/vehicles">
+            <AiOutlineCar className={styles.burger_logo} />
+          </Link>
+
           <div
             className={styles.burger_menu}
             onClick={() => setIsMenuOpen(!isMenuOpen)}
