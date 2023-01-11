@@ -1,0 +1,12 @@
+.vehiculeListContainer {
+  display: flex;
+  padding: 1.5rem;
+  margin: 1.5rem;
+  border: black 1px solid;
+  box-shadow: var(--box-shadow);
+  border-radius: 1rem;
+}
+
+.vehiculeListContainer:hover {
+  box-shadow: var(--box-shadow-hover);
+}
