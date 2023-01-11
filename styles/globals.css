@@ -10,6 +10,13 @@ body {
   width: 100vw;
   height: 100vh;
 }
+button {
+  background-color: var(--highlight-color);
+  padding: 0.5rem 2rem;
+  color: var(--secondary-title-color);
+  border: none;
+  width: 100%;
+}
 
 :root {
   --base-font-family: "Open Sans", sans-serif;

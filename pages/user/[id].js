@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import styles from "./UserProfile.module.css";
 import { useRouter } from "next/router";
-import Image from "next/image";
+
 import axios from "axios";
 import { FiEdit2 } from "react-icons/fi";
 import dummyImage from "../../assets/dummy.jpg";
+import RentalDetailsCard from "../../components/RentalDetailsCard/RentalDetailsCard";
 
 function UserProfile() {
   const dummyUser = {
@@ -51,33 +52,7 @@ function UserProfile() {
       </div>
       <div className={styles.current_booking}>
         <h2>Your next rental</h2>
-        <div className={styles.rental_details}>
-          <Image
-            src={userData.current_rental.vehicle_image}
-            layout="intrinsic"
-          />
-          <table>
-            <tr>
-              <td>Car:</td> <td>{userData.current_rental.vehicle_name}</td>
-            </tr>
-            <tr>
-              <td>License Plate:</td>
-              <td>{userData.current_rental.plate_no}</td>
-            </tr>
-            <tr>
-              <td>Rental Company:</td>
-              <td>{userData.current_rental.company_name}</td>
-            </tr>
-            <tr>
-              <td>Pick up Location:</td>
-              <td>{userData.current_rental.pick_up_venue}</td>
-            </tr>
-            <tr>
-              <td>Drop off Location:</td>
-              <td>{userData.current_rental.drop_of_venue}</td>
-            </tr>
-          </table>
-        </div>
+        <RentalDetailsCard data={userData.current_rental} />
       </div>
     </div>
   );
