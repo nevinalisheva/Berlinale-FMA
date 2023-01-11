@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./navigation.module.css";
+import Link from "next/link";
 import { MdClose } from "react-icons/md";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineCar } from "react-icons/ai";
