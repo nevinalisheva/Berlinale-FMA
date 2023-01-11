@@ -7,6 +7,7 @@ import Image from "next/image";
 
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   return (
     <div className={styles.container}>
@@ -26,9 +27,14 @@ function Navigation() {
         </div>
         <div className={`${styles.menu} ${isMenuOpen ? styles.open : ""}`}>
           <ul className={styles.link_list}>
-            <li>Account</li>
-            <li>LogOut</li>
-            <li>LogIn</li>
+            {isLoggedIn ? (
+              <>
+                <li>Account</li>
+                <li onClick={() => setIsLoggedIn(false)}>LogOut</li>
+              </>
+            ) : (
+              <li onClick={() => setIsLoggedIn(true)}>LogIn</li>
+            )}
           </ul>
         </div>
       </nav>
