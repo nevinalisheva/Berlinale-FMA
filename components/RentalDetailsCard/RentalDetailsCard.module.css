@@ -1,0 +1,16 @@
+.rental_details {
+  padding: 1rem;
+  background-color: var(--secondary-background);
+}
+.rental_details img {
+  border-radius: 5px;
+}
+.rental_details table {
+  margin-bottom: 1rem;
+}
+.rental_details table tr td {
+  padding: 0.25rem;
+}
+.rental_details table tr td:first-child {
+  font-weight: bold;
+}

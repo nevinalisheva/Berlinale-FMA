@@ -10,7 +10,14 @@
   background-color: var(--secondary-background);
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2rem;
 }
 .icon {
   color: var(--highlight-color);
+}
+.current_booking {
+  margin-bottom: 2rem;
+}
+.current_booking h2 {
+  margin-bottom: 1rem;
 }

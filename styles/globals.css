@@ -28,6 +28,7 @@ button {
   --background: white;
   --secondary-background: #f5f5f5;
   --hover-color: rgba(0, 0, 0, 0.05);
+  --border-radius: 5px;
 }
 
 /*Here general roles for the font - the size should not change but the color can*/

@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./RentalDetailsCard.module.css";
 import Image from "next/image";
+
 function RentalDetailsCard({ data }) {
   return (
     <div className={styles.rental_details}>
