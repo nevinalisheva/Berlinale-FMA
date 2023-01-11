@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import axios from "axios";
 import { FiEdit2 } from "react-icons/fi";
+import dummyImage from "../../assets/dummy.jpg";
 
 function UserProfile() {
   const dummyUser = {
@@ -18,8 +19,7 @@ function UserProfile() {
     current_rental: {
       id: 1,
       vehicle_name: "Opel Astra",
-      vehicle_image:
-        "https://images.unsplash.com/photo-1503376780353-7e6692767b70?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8Y2FyfGVufDB8fDB8fA%3D%3D",
+      vehicle_image: dummyImage,
       plate_no: "B-OS 5555",
       company_name: "schöne Autos",
       pick_up_venue: "Berlinale Palast",
@@ -54,11 +54,29 @@ function UserProfile() {
         <div className={styles.rental_details}>
           <Image
             src={userData.current_rental.vehicle_image}
-            fill
-            sizes="(max-width: 768px) 100vw,
-              (max-width: 1200px) 50vw,
-              33vw"
+            layout="intrinsic"
           />
+          <table>
+            <tr>
+              <td>Car:</td> <td>{userData.current_rental.vehicle_name}</td>
+            </tr>
+            <tr>
+              <td>License Plate:</td>
+              <td>{userData.current_rental.plate_no}</td>
+            </tr>
+            <tr>
+              <td>Rental Company:</td>
+              <td>{userData.current_rental.company_name}</td>
+            </tr>
+            <tr>
+              <td>Pick up Location:</td>
+              <td>{userData.current_rental.pick_up_venue}</td>
+            </tr>
+            <tr>
+              <td>Drop off Location:</td>
+              <td>{userData.current_rental.drop_of_venue}</td>
+            </tr>
+          </table>
         </div>
       </div>
     </div>
