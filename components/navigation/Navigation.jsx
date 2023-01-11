@@ -3,7 +3,7 @@ import styles from "./navigation.module.css";
 import { MdClose } from "react-icons/md";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineCar } from "react-icons/ai";
-import Image from "next/image";
+import { MdAccountCircle } from "react-icons/md";
 
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -29,7 +29,9 @@ function Navigation() {
           <ul className={styles.link_list}>
             {isLoggedIn ? (
               <>
-                <li>Account</li>
+                <li>
+                  <MdAccountCircle className={styles.burger_logo} /> Account
+                </li>
                 <li onClick={() => setIsLoggedIn(false)}>LogOut</li>
               </>
             ) : (

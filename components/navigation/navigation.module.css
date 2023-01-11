@@ -65,6 +65,15 @@
   height: 30vh;
   justify-content: space-around;
 }
+.link_list li {
+  margin: auto 1rem;
+  display: flex;
+  align-items: center;
+}
+.link_list li svg {
+  width: 1.3rem;
+  margin-right: 0.25rem;
+}
 
 @media (min-width: 768px) {
   .nav {
@@ -96,7 +105,7 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
     height: auto;
     margin: 0 3rem;
   }
