@@ -1,0 +1,10 @@
+.container {
+  margin: 1rem;
+}
+.profile_info {
+  border-radius: 12px;
+  padding: 1rem;
+  background-color: var(--secondary-background);
+  display: flex;
+  justify-content: space-between;
+}

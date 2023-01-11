@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./UserProfile.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
+import { FiEdit2 } from "react-icons/fi";
 
 function UserProfile() {
   const dummyUser = {
@@ -45,6 +46,7 @@ function UserProfile() {
           <div>{userData.user_email}</div>
           <div>{userData.info}</div>
         </div>
+        <FiEdit2 />
       </div>
       <div className={styles.current_booking}></div>
     </div>
