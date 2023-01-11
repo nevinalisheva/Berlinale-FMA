@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./UserProfile.module.css";
 import { useRouter } from "next/router";
 
