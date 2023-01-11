@@ -32,10 +32,12 @@ function UserProfile() {
   const [userData, setUserData] = useState(dummyUser);
 
   useEffect(() => {
-    axios
-      .get(`/api/userprofile/${userId}`)
-      .then((response) => setUserData(response))
-      .catch((err) => console.log(err));
+    if (userId) {
+      axios
+        .get(`/api/userprofile/${userId}`)
+        .then((response) => setUserData(response))
+        .catch((err) => console.log(err));
+    }
   }, []);
 
   return (
