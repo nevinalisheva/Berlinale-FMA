@@ -14,3 +14,23 @@
 .rental_details table tr td:first-child {
   font-weight: bold;
 }
+
+@media screen and (min-width: 760px) {
+  .rental_details {
+    display: flex;
+  }
+  .rental_details img {
+    width: 40vw;
+  }
+
+  .rental_details div {
+    margin-left: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .rental_details table {
+    max-width: 400px;
+  }
+}
