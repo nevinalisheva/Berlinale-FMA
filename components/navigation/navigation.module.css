@@ -1,0 +1,117 @@
+.container {
+  position: fixed;
+  width: 100vw;
+  background-color: var(--nav-background);
+  backdrop-filter: blur(10px);
+  z-index: 5;
+}
+.shadow {
+  box-shadow: 0 10px 30px -10px;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  overflow-x: hidden;
+}
+.menu {
+  display: flex;
+  justify-content: space-between;
+  color: var(--first-color);
+}
+.navigation {
+  display: flex;
+  width: 100vw;
+  margin: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 4;
+}
+.burger_logo {
+  color: var(--first-color);
+  width: 2rem;
+  height: 2rem;
+}
+.burger_menu {
+  display: block;
+  cursor: pointer;
+  z-index: 2;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  top: 0;
+  justify-content: flex-start;
+  transform: translateX(110vw);
+  overflow-x: hidden;
+  position: absolute;
+  background-color: var(--second-background);
+  z-index: 1;
+  height: 100vh;
+  position: fixed;
+}
+
+.menu.open {
+  width: 70vw;
+  transform: translateX(30vw);
+  transition: transform 0.5s;
+}
+.link_list {
+  list-style: none;
+  margin: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 30vh;
+  justify-content: space-around;
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--third-color);
+  text-decoration: none;
+  cursor: pointer;
+}
+.number {
+  color: var(--first-color);
+}
+@media (min-width: 768px) {
+  nav {
+    height: 4rem;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0 1rem;
+    position: relative;
+  }
+  .burger_menu {
+    display: none;
+  }
+  .menu {
+    display: flex;
+    flex-direction: row;
+    height: 4rem;
+    background-color: var(--first-background);
+    transform: translateX(0vw);
+    z-index: 4;
+  }
+  .menu.open {
+    display: flex;
+    width: auto;
+    transform: translateX(0vw);
+  }
+  ul {
+    display: flex;
+  }
+  .link_list {
+    flex-direction: row;
+    height: auto;
+    margin: 0 3rem;
+  }
+  .links {
+    flex-direction: row;
+    margin-left: 2rem;
+  }
+}
