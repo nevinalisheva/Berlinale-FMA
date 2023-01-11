@@ -14,7 +14,7 @@ function Navigation() {
     <div className={styles.container}>
       <nav className={styles.nav}>
         <div className={styles.navigation}>
-          <Link href="/vehicles">
+          <Link href={isLoggedIn ? "/vehicles" : "/"}>
             <AiOutlineCar className={styles.burger_logo} />
           </Link>
 
