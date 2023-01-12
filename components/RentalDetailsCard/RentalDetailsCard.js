@@ -7,7 +7,7 @@ import CancelModal from "../CancelModal/CancelModal";
 function RentalDetailsCard({ data, user_id }) {
   const [showModal, setShowModal] = useState(false);
   const [showCancelModal, setShowCancelModal] = useState(false);
-  console.log(data);
+
   return (
     <>
       <div className={styles.rental_details}>
