@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import VehicleCard from "../../components/vehicleCard/VehicleCard";
-import { Link } from "react-router-dom";
+import styles from "./index.module.css";
 
 const VehicleList = () => {
   const [selected, setSelected] = useState("");
@@ -76,7 +76,7 @@ const VehicleList = () => {
     },
   ];
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Car list</h1>
       <form>
         <label htmlFor="location-selec">
