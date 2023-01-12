@@ -132,7 +132,7 @@ const AddVehicule = () => {
           </div>
         </div>
 
-        <input className="button" type="submit" value="Add Vehicule" />
+        <input className="button" type="submit" value="Add Vehicle" />
       </form>
     </div>
   );
