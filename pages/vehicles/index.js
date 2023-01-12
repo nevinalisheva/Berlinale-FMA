@@ -1,6 +1,3 @@
-
-
-
 // import Image from "next/image";
 // import useSWR from 'swr';
 
@@ -38,6 +35,8 @@ import styles from "./index.module.css";
 const VehicleList = () => {
   const [selected, setSelected] = useState("");
 
+  //FILTER THE TRUE WITH QUERY WHEN FETCHING the database
+
   console.log("SELECTED", selected);
   let carList = [
     {
@@ -50,7 +49,7 @@ const VehicleList = () => {
       availability: true,
       plate_no: "plate_no",
       location_id: 3,
-      image: "url image",
+      image: "/dummy.jpg",
       company_id: 4,
     },
     {
@@ -63,7 +62,7 @@ const VehicleList = () => {
       availability: true,
       plate_no: "plate_no",
       location_id: 1,
-      image: "url image",
+      image: null,
       company_id: 4,
     },
     {
@@ -76,7 +75,7 @@ const VehicleList = () => {
       availability: true,
       plate_no: "plate_no",
       location_id: 3,
-      image: "url image",
+      image: null,
       company_id: 4,
     },
     {
@@ -89,7 +88,7 @@ const VehicleList = () => {
       availability: true,
       plate_no: "plate_no",
       location_id: 2,
-      image: "url image",
+      image: null,
       company_id: 4,
     },
   ];
@@ -110,7 +109,7 @@ const VehicleList = () => {
   ];
   return (
     <div className={styles.container}>
-      <h1>Car list</h1>
+      <h1>Cars available</h1>
       <form>
         <label htmlFor="location-selec">
           Filter by location {""}
@@ -131,15 +130,13 @@ const VehicleList = () => {
           </select>
         </label>
       </form>
-      <ul>
-        <li>
-          {carList
-            .filter((car) => !selected.length || car.location_id == selected)
-            .map((car) => {
-              return <VehicleCard car={car} key={car.vehicle_id} />;
-            })}
-        </li>
-      </ul>
+      <div>
+        {carList
+          .filter((car) => !selected.length || car.location_id == selected)
+          .map((car) => {
+            return <VehicleCard car={car} key={car.vehicle_id} />;
+          })}
+      </div>
     </div>
   );
 };

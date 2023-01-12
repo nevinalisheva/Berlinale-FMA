@@ -1,4 +1,15 @@
 .container {
-  position: fixed;
+  position: relative;
   top: 4rem;
+  width: 70%;
+  margin: auto;
+}
+
+.container h1 {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.container form {
+  text-align: center;
 }
