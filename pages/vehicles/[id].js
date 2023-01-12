@@ -18,7 +18,7 @@ const VehicleById = () => {
         vehicle_brand: "Ford",
         vehicle_model: "peagot 206",
         mileage: 333999,
-        availability: true,
+        availability: false,
         plate_no: "plate_no",
         location_id: 3,
         image: null,
