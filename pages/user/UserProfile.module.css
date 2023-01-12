@@ -1,7 +1,9 @@
 .container {
   position: absolute;
   top: 4rem;
-  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 .container h1 {
   margin-bottom: 1rem;
