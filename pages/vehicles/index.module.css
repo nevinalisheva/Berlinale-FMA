@@ -1,6 +1,6 @@
 .container {
   position: relative;
-  width: 70%;
+  width: 90%;
   margin: 4rem auto;
 }
 
@@ -20,4 +20,10 @@
   border-radius: 4px;
   resize: vertical;
   margin-top: 1rem;
+}
+
+@media screen and (min-width: 760px) {
+  .container {
+    width: 70%;
+  }
 }

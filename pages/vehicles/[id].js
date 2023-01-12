@@ -1,38 +1,37 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import useSWR from 'swr';
-import styles from './[id].module.css';
-import img from "../../assets/dummy.jpg"
+import useSWR from "swr";
+import styles from "./[id].module.css";
+import img from "../../assets/dummy.jpg";
 
 const fetcher = async () => {
-    const response = await fetch('url')
-    const data = await response.json()
-    return data
-}
+  const response = await fetch("url");
+  const data = await response.json();
+  return data;
+};
 
 const VehicleById = () => {
-    let data = 
-      {
-        vehicle_id: 1,
-        vehicle_name: "Ford Galaxie 500",
-        vehicle_desc: "lalala",
-        vehicle_brand: "Ford",
-        vehicle_model: "peagot 206",
-        mileage: 333999,
-        availability: true,
-        plate_no: "plate_no",
-        location_id: 3,
-        image: null,
-        company_id: 4,
-      };
+  let data = {
+    vehicle_id: 1,
+    vehicle_name: "Ford Galaxie 500",
+    vehicle_desc: "lalala",
+    vehicle_brand: "Ford",
+    vehicle_model: "peagot 206",
+    mileage: 333999,
+    availability: true,
+    plate_no: "plate_no",
+    location_id: 3,
+    image: null,
+    company_id: 4,
+  };
 
-    // const router = useRouter();
-    // const {id} = router.query;
+  // const router = useRouter();
+  // const {id} = router.query;
 
-    // const { data, error } = useSWR(id ? `/api/vehicles/${id}` : null, fetcher)
+  // const { data, error } = useSWR(id ? `/api/vehicles/${id}` : null, fetcher)
 
-    // if (error) return <div>Failed to load</div>
-    // if (!data) return <div>Loading...</div>
+  // if (error) return <div>Failed to load</div>
+  // if (!data) return <div>Loading...</div>
 
   return (
     <div className={styles.main}>
