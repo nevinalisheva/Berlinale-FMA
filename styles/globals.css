@@ -10,6 +10,13 @@ body {
   width: 100vw;
   height: 100vh;
 }
+.grid_main_wrapper {
+  min-height: calc(100vh - 100px);
+  background-color: var(--secondary-accent);
+}
+.grid_footer {
+  height: 100px;
+}
 button,
 .button {
   background-color: var(--highlight-color);
@@ -19,7 +26,8 @@ button,
   width: 100%;
   margin-bottom: 0.5rem;
 }
-button:hover {
+button:hover,
+.button:hover {
   transition: all 0.5s;
   background-color: #aa2339;
 }
