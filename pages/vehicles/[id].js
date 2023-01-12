@@ -37,6 +37,8 @@ const VehicleById = () => {
         company_id: 4,
       };
     let user_id = 1;
+    let isCustomer=true;
+    let isCompany=false;
       
 
   // const router = useRouter();
@@ -115,22 +117,31 @@ const VehicleById = () => {
               </table>
             </div>
           </div>
-          {data.availability ? (
-            <button className={styles.button} onClick={booking}>
-              Book now
-            </button>
-          ) : (
-            <button className={styles.button}>Booked out</button>
-          )}
-          {!data.availability && (
+
+          {isCustomer &&
+            (data.availability ? (
+              <button className={styles.button} onClick={booking}>
+                Book now
+              </button>
+            ) : (
+              <button className={styles.button}>Booked out</button>
+            ))}
+          {isCustomer && !data.availability && (
             <p>Oops, this vehicle is not available for booking anymore...</p>
           )}
+          {isCompany && (
+            <button className={styles.button}>Delete Listing</button>
+          )}
         </div>
-        
-       
       </div>
       {showModal && (
-        <DropOffModal setShowModal={setShowModal} data={data.drop_of_venue} clicked={clicked} title="Where are you headed?" user_id={user_id}/>
+        <DropOffModal
+          setShowModal={setShowModal}
+          data={data.drop_of_venue}
+          clicked={clicked}
+          title="Where are you headed?"
+          user_id={user_id}
+        />
       )}
     </div>
   );

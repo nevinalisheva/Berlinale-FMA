@@ -1,10 +1,10 @@
-import connection from "../auth/lib/db";
+import connection from "../../auth/lib/db";
 
 export default async function handler(req, res) {
-  const { user_id } = req.query;
+  const { company_id } = req.query;
   const query =
-    "SELECT *, c.company_name AS user_company FROM user u LEFT JOIN company c ON u.company_id = c.company_id WHERE u.user_id = " +
-    user_id;
+    "SELECT DISTINCT company.company_name FROM company JOIN vehicle ON company.company_id=vehicle.company_id WHERE vehicle.company_id=" +
+    company_id;
   connection
     .promise()
     .query(query)
