@@ -1,5 +1,5 @@
 .container {
-  position: absolute;
+  position: relative;
   top: 4rem;
   display: flex;
   flex-direction: column;

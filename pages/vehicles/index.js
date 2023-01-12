@@ -1,6 +1,3 @@
-
-
-
 // import Image from "next/image";
 // import useSWR from 'swr';
 
@@ -32,11 +29,19 @@
 //   );
 // };
 import React, { useState } from "react";
+import AddVehicule from "../../components/addVehicule/AddVehicule";
 import VehicleCard from "../../components/vehicleCard/VehicleCard";
 import styles from "./index.module.css";
 
 const VehicleList = () => {
   const [selected, setSelected] = useState("");
+  const [addCompontentVehicle, setAddComponentVehicle] = useState(false);
+
+  const handleAddVehicule = () => {
+    setAddComponentVehicle(!addCompontentVehicle);
+  };
+
+  //FILTER THE TRUE WITH QUERY WHEN FETCHING the database
 
   console.log("SELECTED", selected);
   let carList = [
@@ -50,7 +55,7 @@ const VehicleList = () => {
       availability: true,
       plate_no: "plate_no",
       location_id: 3,
-      image: "url image",
+      image: "/dummy.jpg",
       company_id: 4,
     },
     {
@@ -63,7 +68,7 @@ const VehicleList = () => {
       availability: true,
       plate_no: "plate_no",
       location_id: 1,
-      image: "url image",
+      image: null,
       company_id: 4,
     },
     {
@@ -76,7 +81,7 @@ const VehicleList = () => {
       availability: true,
       plate_no: "plate_no",
       location_id: 3,
-      image: "url image",
+      image: null,
       company_id: 4,
     },
     {
@@ -89,7 +94,7 @@ const VehicleList = () => {
       availability: true,
       plate_no: "plate_no",
       location_id: 2,
-      image: "url image",
+      image: null,
       company_id: 4,
     },
   ];
@@ -110,46 +115,48 @@ const VehicleList = () => {
   ];
   return (
     <div className={styles.container}>
-      <h1>Car list</h1>
-      <form>
-        <label htmlFor="location-selec">
-          Filter by location {""}
-          <select
-            id="location-selec"
-            value={selected}
-            onChange={(e) => setSelected(e.target.value)}
-          >
-            <option value="">---</option>
-            {locations.map((location) => {
-              return (
-                <option key={location.location_id} value={location.location_id}>
-                  {" "}
-                  {location.venu_name}
-                </option>
-              );
-            })}
-          </select>
-        </label>
-      </form>
-      <ul>
-        <li>
-          {carList
-            .filter((car) => !selected.length || car.location_id == selected)
-            .map((car) => {
-              return <VehicleCard car={car} key={car.vehicle_id} />;
-            })}
-        </li>
-      </ul>
+      <h1>Vehicles available</h1>
+      {/* show only if user is a compagny */}
+      <button onClick={handleAddVehicule}>Add vehicle</button>
+      {/* show if Add vehiicule is clicked */}
+      {addCompontentVehicle && <AddVehicule />}
+
+      {/* show form only if user is a client */}
+      <div className={styles.filterContainer}>
+        <form>
+          <label htmlFor="location-selec">
+            Location {""}
+            <select
+              id="location-selec"
+              value={selected}
+              onChange={(e) => setSelected(e.target.value)}
+            >
+              <option value="">---</option>
+              {locations.map((location) => {
+                return (
+                  <option
+                    key={location.location_id}
+                    value={location.location_id}
+                  >
+                    {" "}
+                    {location.venu_name}
+                  </option>
+                );
+              })}
+            </select>
+          </label>
+        </form>
+      </div>
+
+      <div>
+        {carList
+          .filter((car) => !selected.length || car.location_id == selected)
+          .map((car) => {
+            return <VehicleCard car={car} key={car.vehicle_id} />;
+          })}
+      </div>
     </div>
   );
 };
 
 export default VehicleList;
-
-//{
-/*<Link key={car.vehicle_id} to={`/vehicule/${car.vehicule_id}`}>
-                  
-                </Link>*/
-//}
-
-// export default Details;

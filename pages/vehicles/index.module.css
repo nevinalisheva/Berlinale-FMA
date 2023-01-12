@@ -1,4 +1,23 @@
 .container {
-  position: fixed;
-  top: 4rem;
+  position: relative;
+  width: 70%;
+  margin: 4rem auto;
+}
+
+.container h1 {
+  text-align: center;
+  padding-bottom: 1rem;
+}
+
+.container form {
+  text-align: center;
+}
+
+.filterContainer select {
+  width: 40%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+  margin-top: 1rem;
 }
