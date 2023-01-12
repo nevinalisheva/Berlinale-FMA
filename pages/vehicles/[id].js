@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
 import useSWR from 'swr';
-import styles from './[id].module.css'
+import styles from './[id].module.css';
+import img from "../../assets/dummy.jpg"
 
 const fetcher = async () => {
     const response = await fetch('url')
@@ -18,7 +19,7 @@ const VehicleById = () => {
         vehicle_brand: "Ford",
         vehicle_model: "peagot 206",
         mileage: 333999,
-        availability: false,
+        availability: true,
         plate_no: "plate_no",
         location_id: 3,
         image: null,
@@ -38,29 +39,77 @@ const VehicleById = () => {
       <div className={styles.container}>
         <div className={styles.img}>
           <Image
-            src={data.image ? data.image : "/Image_not_available.png"}
+            src={data.image ? data.image : img}
             alt="vehicle-image"
             width={400}
-            height={400}
+            // height={400}
+            className="vehicle-pic"
           />
         </div>
         <div className={styles.desc}>
           <div className={styles.info}>
             <h1>{data.vehicle_name}</h1>
             <div className={styles.details}>
-              {data.vehicle_brand && <p>Brand: {data.vehicle_brand}</p>}
-              {data.vehicle_model && <p>Model: {data.vehicle_model}</p>}
-              {data.vehicle_desc && <p>Description: {data.vehicle_desc}</p>}
-              {data.plate_no && <p>Plate number: {data.plate_no}</p>}
-              {data.mileage && <p>Mileage: {data.mileage}</p>}
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <strong>Brand: </strong>
+                    </td>
+                    <td>{data.vehicle_brand}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Model: </strong>
+                    </td>
+                    <td>{data.vehicle_model}</td>
+                  </tr>
+                  {data.plate_no && (
+                    <tr>
+                      <td>
+                        <strong>License Plate: </strong>
+                      </td>
+                      <td>{data.plate_no}</td>
+                    </tr>
+                  )}
+                  {data.mileage && (
+                    <tr>
+                      <td>
+                        <strong>Mileage: </strong>
+                      </td>
+                      <td>{data.mileage}</td>
+                    </tr>
+                  )}
+                  <tr>
+                    <td>
+                      <strong>Rental Company: </strong>
+                    </td>
+                    <td>{data.company_name}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Pick up Location: </strong>
+                    </td>
+                    <td>{data.pick_up_venue}</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Drop off Location: </strong>
+                    </td>
+                    <td>{data.drop_of_venue}</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
           </div>
           {data.availability ? (
-            <button className="{styles.button}">Book now</button>
+            <button className={styles.button}>Book now</button>
           ) : (
-            <button className="{styles.booked-button}">Booked out</button>
+            <button className={styles.button}>Booked out</button>
           )}
-          {!data.availability && <p>Oops, this vehicle is not available for booking anymore...</p>}
+          {!data.availability && (
+            <p>Oops, this vehicle is not available for booking anymore...</p>
+          )}
         </div>
       </div>
     </div>
