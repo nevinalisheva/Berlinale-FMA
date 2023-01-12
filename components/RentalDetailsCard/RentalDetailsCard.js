@@ -61,6 +61,7 @@ function RentalDetailsCard({ data, user_id, destination }) {
           setShowModal={setShowModal}
           user_id={user_id}
           data={data.venue_name}
+          car_id={data.vehicle_id}
           title="Return the vehicle"
         />
       )}
