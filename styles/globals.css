@@ -10,6 +10,13 @@ body {
   width: 100vw;
   height: 100vh;
 }
+button {
+  background-color: var(--highlight-color);
+  padding: 0.5rem 2rem;
+  color: var(--secondary-title-color);
+  border: none;
+  width: 100%;
+}
 
 :root {
   --base-font-family: "Open Sans", sans-serif;
@@ -19,7 +26,9 @@ body {
   --secondary-title-color: white;
   --highlight-color: #d62e4a;
   --background: white;
+  --secondary-background: #f5f5f5;
   --hover-color: rgba(0, 0, 0, 0.05);
+  --border-radius: 5px;
   /* shadows */
   --box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.25);
   --box-shadow-hover: 5px 5px 6px rgba(0, 0, 0, 0.25);

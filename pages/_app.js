@@ -1,3 +1,4 @@
+
 import Navigation from "../components/navigation/Navigation";
 import "../styles/globals.css";
 
