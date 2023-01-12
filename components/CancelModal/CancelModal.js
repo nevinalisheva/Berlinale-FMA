@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./CancelModal.module.css";
 import axios from "axios";
 
-function CancelModal({ setShowModal, data }) {
+function CancelModal({ setShowModal, data, setCarVisible }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [showNoConfirmation, setShowNoConfirmation] = useState(false);
   function handleClick() {
@@ -31,6 +31,7 @@ function CancelModal({ setShowModal, data }) {
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
     setShowNoConfirmation(true);
+    setCarVisible(false);
   }
   return (
     <>

@@ -4,7 +4,15 @@ import { SlEmotsmile } from "react-icons/sl";
 import { useRouter } from "next/router";
 import axios from "axios";
 
-function DropOffModal({ setShowModal, data, clicked, title, user_id, car_id }) {
+function DropOffModal({
+  setShowModal,
+  data,
+  clicked,
+  title,
+  user_id,
+  car_id,
+  setCarVisible,
+}) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [showNoConfirmation, setShowNoConfirmation] = useState(false);
   const [selected, setSelected] = useState("");
@@ -42,7 +50,6 @@ function DropOffModal({ setShowModal, data, clicked, title, user_id, car_id }) {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    console.log();
   }, [data]);
 
   function handleYesClick(e) {
@@ -52,6 +59,7 @@ function DropOffModal({ setShowModal, data, clicked, title, user_id, car_id }) {
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
     setShowConfirm(true);
+    setCarVisible(false);
   }
   function handleNoClick(e) {
     e.preventDefault();

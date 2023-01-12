@@ -12,6 +12,7 @@ function UserProfile() {
   const [userData, setUserData] = useState(null);
   const [carDestination, setCarDestination] = useState(null);
   const [carData, setCarData] = useState(null);
+  const [carVisible, setCarVisible] = useState(true);
 
   useEffect(() => {
     setUserId(location.pathname.split("/user/")[1]);
@@ -50,7 +51,7 @@ function UserProfile() {
             <UserInfoCard data={userData} />
           </>
         )}
-        {carData && carData.is_active !== 0 && (
+        {carData && carData.is_active !== 0 && carVisible && (
           <div className={styles.current_booking}>
             <h2>Your next rental</h2>
             {carData && (
@@ -58,6 +59,7 @@ function UserProfile() {
                 data={carData}
                 user_id={userId}
                 destination={carDestination}
+                setCarVisible={setCarVisible}
               />
             )}
           </div>
