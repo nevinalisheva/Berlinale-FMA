@@ -43,6 +43,7 @@ function UserProfile() {
       .then((response) => setCarData(response.data[0]))
       .catch((err) => console.log(err));
   }, []);
+
   if (userId) {
     return (
       <div className={styles.container}>
@@ -50,7 +51,7 @@ function UserProfile() {
         <UserInfoCard data={userData} />
         <div className={styles.current_booking}>
           <h2>Your next rental</h2>
-          {carData && <RentalDetailsCard data={carData} />}
+          {carData && <RentalDetailsCard data={carData} user_id={userId} />}
         </div>
       </div>
     );

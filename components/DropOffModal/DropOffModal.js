@@ -32,14 +32,12 @@ function DropOffModal({ setShowModal, data, clicked, title, user_id }) {
   useEffect(() => {
     const timer = setTimeout(() => {
       if (showConfirm) router.push(`/user/${user_id}`);
-    }, 1500)
+    }, 1500);
 
     return () => {
       clearInterval(timer);
     };
   }, [showConfirm]);
-
-
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -61,7 +59,6 @@ function DropOffModal({ setShowModal, data, clicked, title, user_id }) {
         <div className={styles.modal}>
           <div className={styles.modal_header}>
             <p>{title}</p>
-
             <div onClick={handleClick} className={styles.header_x}>
               &#10005;
             </div>
@@ -91,8 +88,13 @@ function DropOffModal({ setShowModal, data, clicked, title, user_id }) {
               </label>
             </form>
           )}
-          {selected !== "" && !showConfirm &&(
-            <button className={styles.button} onClick={()=>setShowConfirm(true)}>Confirm booking</button>
+          {selected !== "" && !showConfirm && (
+            <button
+              className={styles.button}
+              onClick={() => setShowConfirm(true)}
+            >
+              Confirm booking
+            </button>
           )}
           {data && !showConfirm && !showNoConfirmation && (
             <div className={styles.modal_content}>
