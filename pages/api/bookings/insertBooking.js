@@ -1,12 +1,12 @@
 import connection from "../auth/lib/db";
 
 export default async function handler(req, res) {
-    const {vehicle_id, user_id, destination}= req.body;
+  const { vehicle_id, user_id, destination } = req.body;
   const query =
-    "INSERT INTO booking(vehicle_id, user_id, destination) VALUES (?, ?, ?)";
+    "INSERT INTO booking(vehicle_id, user_id, destination, is_active) VALUES (?, ?, ?, ?)";
   connection
     .promise()
-    .query(query, [vehicle_id, user_id, destination])
+    .query(query, [vehicle_id, user_id, destination, is_active])
     .then(([result]) => {
       res.json(result);
     })
