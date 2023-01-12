@@ -60,6 +60,14 @@
   height: 30vh;
   justify-content: space-around;
 }
+.link_list button {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.link_list button svg {
+  font-size: 1.5rem;
+}
 .link_list li {
   margin: auto 1rem;
   display: flex;
@@ -87,7 +95,7 @@
     display: none;
   }
   .menu {
-    width: 30vw;
+    width: 50vw;
     display: flex;
     justify-content: center;
     height: 4rem;
@@ -107,5 +115,8 @@
     justify-content: flex-end;
     height: auto;
     margin: 0 3rem;
+  }
+  .link_list button {
+    margin-bottom: 0;
   }
 }
