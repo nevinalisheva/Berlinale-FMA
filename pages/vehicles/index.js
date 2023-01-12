@@ -11,9 +11,9 @@ const fetcher = async () => {
   return data;
 };
 const fetcherLoc = async () => {
-  const responseLoc = await fetch("http://localhost:3000/api/locations");
-  const dataLoc = await responseLoc.json();
-  return dataLoc;
+  const response = await fetch("http://localhost:3000/api/locations");
+  const data= await response.json();
+  return data;
 };
 
 const VehicleList = () => {
