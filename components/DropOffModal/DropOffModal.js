@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import styles from "./Modal.module.css";
+import styles from "./DropOffModal.module.css";
 import { SlEmotsmile } from "react-icons/sl";
 
-function Modal({ setShowModal, data }) {
+function DropOffModal({ setShowModal, data }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [showNoConfirmation, setShowNoConfirmation] = useState(false);
   function handleClick() {
@@ -65,4 +65,4 @@ function Modal({ setShowModal, data }) {
     </>
   );
 }
-export default Modal;
+export default DropOffModal;

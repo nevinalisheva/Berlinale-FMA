@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import styles from "./RentalDetailsCard.module.css";
 import Image from "next/image";
-import Modal from "../Modal/Modal";
+import DropOffModal from "../DropOffModal/DropOffModal";
 
 function RentalDetailsCard({ data }) {
   const [showModal, setShowModal] = useState(false);
+  const [showCancelModal, setShowCancelModal] = useState(false);
   return (
     <>
       <div className={styles.rental_details}>
@@ -42,11 +43,16 @@ function RentalDetailsCard({ data }) {
           <button className="button" onClick={() => setShowModal(true)}>
             return car
           </button>
-          <button className="secondary_button">cancel rental</button>
+          <button
+            className="secondary_button"
+            onClick={() => setShowCancelModal(true)}
+          >
+            cancel rental
+          </button>
         </div>
       </div>
       {showModal && (
-        <Modal setShowModal={setShowModal} data={data.drop_of_venue} />
+        <DropOffModal setShowModal={setShowModal} data={data.drop_of_venue} />
       )}
     </>
   );

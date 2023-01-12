@@ -5,7 +5,6 @@ import axios from "axios";
 import dummyImage from "../../assets/dummy.jpg";
 import RentalDetailsCard from "../../components/RentalDetailsCard/RentalDetailsCard";
 import UserInfoCard from "../../components/UserInfoCard/UserInfoCard";
-import Modal from "../../components/Modal/Modal";
 
 function UserProfile() {
   const dummyUser = {
