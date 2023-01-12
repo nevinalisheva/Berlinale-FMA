@@ -24,7 +24,7 @@ button,
   color: var(--secondary-title-color);
   border: none;
   width: 100%;
-  margin-bottom: 0.5rem;
+  margin: 0.5rem auto;
 }
 button:hover,
 .button:hover {
