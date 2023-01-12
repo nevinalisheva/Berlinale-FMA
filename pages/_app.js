@@ -1,4 +1,3 @@
-
 import { SessionProvider } from "next-auth/react";
 import Navigation from "../components/navigation/Navigation";
 import "../styles/globals.css";
@@ -11,7 +10,5 @@ export default function App({
       <Navigation customer_logged_out />
       <Component {...pageProps} />
     </SessionProvider>
-
-
   );
 }
