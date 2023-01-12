@@ -43,17 +43,19 @@ function UserProfile() {
       .then((response) => setCarData(response.data[0]))
       .catch((err) => console.log(err));
   }, []);
-
-  return (
-    <div className={styles.container}>
-      <h1>{userData.is_admin ? "Admin" : "User"} Profile</h1>
-      <UserInfoCard data={userData} />
-      <div className={styles.current_booking}>
-        <h2>Your next rental</h2>
-        {carData && <RentalDetailsCard data={carData} />}
+  if (userId) {
+    return (
+      <div className={styles.container}>
+        <h1>{userData.is_admin ? "Admin" : "User"} Profile</h1>
+        <UserInfoCard data={userData} />
+        <div className={styles.current_booking}>
+          <h2>Your next rental</h2>
+          {carData && <RentalDetailsCard data={carData} />}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+  return <div className={styles.container}>You shouldn't be here</div>;
 }
 
 export default UserProfile;
