@@ -59,7 +59,13 @@ function DropOffModal({
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
     setShowConfirm(true);
-    setCarVisible(false);
+    const timer = setTimeout(() => {
+      setCarVisible(false);
+    }, 1500);
+
+    return () => {
+      clearInterval(timer);
+    };
   }
   function handleNoClick(e) {
     e.preventDefault();

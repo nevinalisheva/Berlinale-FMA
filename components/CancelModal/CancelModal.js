@@ -31,7 +31,13 @@ function CancelModal({ setShowModal, data, setCarVisible }) {
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
     setShowNoConfirmation(true);
-    setCarVisible(false);
+
+    const timer = setTimeout(() => {
+      setCarVisible(false);
+    }, 1500);
+    return () => {
+      clearInterval(timer);
+    };
   }
   return (
     <>
