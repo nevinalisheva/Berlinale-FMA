@@ -1,0 +1,17 @@
+.profile_info {
+  max-width: 400px;
+  padding: 1rem;
+  background-color: var(--secondary-background);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+.profile_info div div {
+  padding: 0.25rem;
+}
+.profile_info div div:first-of-type {
+  font-weight: bold;
+}
+.icon {
+  color: var(--highlight-color);
+}

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@next/font": "13.1.1",
+    "axios": "^1.2.2",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "mysql": "^2.18.1",
@@ -17,7 +18,10 @@
     "next-auth": "^4.18.8",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+   
+    "v8": "^0.1.0",
+    "react-icons": "^4.7.1",
     "serverless-mysql": "^1.5.4",
-    "v8": "^0.1.0"
+    "swr": "^2.0.0"
   }
 }
