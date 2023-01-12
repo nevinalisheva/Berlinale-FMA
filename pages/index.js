@@ -21,7 +21,9 @@ export default function Home() {
         <main>
           signed in as {session.user.email}
           <button onClick={() => signOut()}>sign out</button>
-          <div>möp</div>
+          <div>
+            <h1>Wellcome {session.user.name}</h1>
+          </div>
         </main>
       </>
     );

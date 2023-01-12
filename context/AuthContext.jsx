@@ -1,5 +1,7 @@
+import nextAuth from "next-auth";
+
 import { createContext, useEffect, useState, useContext } from "react";
-import { auth } from "../firebase/firebase";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 import { useRouter } from "next/router";
 
@@ -10,8 +12,8 @@ export function useAuthContext() {
 
 export const AuthContextProvider = ({ children }) => {
   const router = useRouter();
-
-  const [user, setUser] = useState({});
+  const { data: session } = useSession();
+  const [user, setUser] = useState([]);
 
   //   const logIn = (email, password) => {
 
