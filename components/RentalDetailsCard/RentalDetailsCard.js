@@ -36,7 +36,8 @@ function RentalDetailsCard({ data }) {
             </tr>
           </tbody>
         </table>
-        <button className="button">cancel rental</button>
+        <button className="button">return car</button>
+        <button className="secondary_button">cancel rental</button>
       </div>
     </div>
   );
