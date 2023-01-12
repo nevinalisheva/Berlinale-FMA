@@ -8,6 +8,8 @@ export default async function handler(req, res) {
     "UPDATE vehicle SET availability= NOT availability WHERE vehicle_id= " + vehicle_id;
   } else if (req.method==="GET") {
     query = "SELECT * FROM vehicle WHERE vehicle_id= " + vehicle_id;
+  } else if (req.method==="DELETE") {
+    query = "DELETE FROM vehicle WHERE vehicle_id= " + vehicle_id;
   }
   connection
     .promise()
