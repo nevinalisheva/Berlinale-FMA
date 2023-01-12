@@ -6,10 +6,26 @@
   padding: 1.5rem;
   margin: 1.5rem;
   background-color: var(--secondary-background);
+  transition: transform 0.2s; /* Animation */
 }
 
 .vehicleListContainer:hover {
-  box-shadow: var(--box-shadow-hover);
+  /*box-shadow: var(--box-shadow-hover);*/
+  transform: scale(1.02);
+}
+
+.vehicleListTopContainer {
+  width: 100%;
+}
+
+.img {
+  margin: auto;
+  border-radius: 5px;
+
+  object-fit: contain;
+  width: 100% !important;
+  position: relative !important;
+  height: unset !important;
 }
 
 .vehicleListBottomContainer {
@@ -17,11 +33,15 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 70%;
+  width: 100%;
 }
 
-.vehicleListBottomContainer > * {
-  margin: 1rem;
+.vehicleListBottomContainer > h2 {
+  margin: 0.7rem;
+}
+
+.vehicleListBottomContainer > p {
+  margin: 0.2rem;
 }
 
 .vehicleListBottomContainer .button {
@@ -30,19 +50,25 @@
 
 .vehicleListBottomContainer > a {
   text-decoration: none;
-  width: 10rem;
   text-align: center;
-}
-
-.img {
-  margin: 0.6rem;
-  border-radius: 5px;
-  height: 100%;
+  margin-top: 1rem;
 }
 
 @media screen and (min-width: 760px) {
   .vehicleListContainer {
     flex-direction: row;
     height: 18rem;
+  }
+
+  .vehicleListBottomContainer > a {
+    width: 15rem;
+  }
+
+  .vehicleListTopContainer {
+    width: 50%;
+  }
+
+  .vehicleListBottomContainer {
+    width: 70%;
   }
 }
