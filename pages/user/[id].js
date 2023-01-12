@@ -28,16 +28,20 @@ function UserProfile() {
   };
   const router = useRouter();
   const { id } = router.query;
-  const [userId] = useState(id);
+  const [userId] = useState(1);
   const [userData, setUserData] = useState(dummyUser);
+  const [carData, setCarData] = useState(null);
 
   useEffect(() => {
-    if (userId) {
-      axios
-        .get(`/api/user/${userId}`)
-        .then((response) => setUserData(response))
-        .catch((err) => console.log(err));
-    }
+    axios
+      .get(`/api/user/${userId}`)
+      .then((response) => setUserData(response.data[0]))
+      .catch((err) => console.log(err));
+
+    axios
+      .get(`/api/rent/${userId}`)
+      .then((response) => setCarData(response.data[0]))
+      .catch((err) => console.log(err));
   }, []);
 
   return (
@@ -46,10 +50,7 @@ function UserProfile() {
       <UserInfoCard data={userData} />
       <div className={styles.current_booking}>
         <h2>Your next rental</h2>
-        <RentalDetailsCard
-          data={userData.current_rental}
-          user_id={userData.id}
-        />
+        {carData && <RentalDetailsCard data={carData} />}
       </div>
     </div>
   );
