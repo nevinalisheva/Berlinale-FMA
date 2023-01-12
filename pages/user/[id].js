@@ -48,7 +48,7 @@ function UserProfile() {
   useEffect(() => {
     if (carData) {
       axios
-        .get(`/api/locations/vehicle/${carData.vehicle_id}`)
+        .get(`/api/locations/destination/${carData.vehicle_id}`)
         .then((response) => setCarDestination(response.data[0]))
         .catch((err) => console.log(err));
     }
