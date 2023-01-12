@@ -54,3 +54,7 @@ h3 {
 p {
   font-size: 1rem;
 }
+
+.vehicle-pic {
+  border-radius: 5px;
+}
