@@ -19,6 +19,10 @@ function Modal({ setShowModal, data }) {
     e.preventDefault();
     setShowConfirm(true);
   }
+  function handleNoClick(e) {
+    e.preventDefault();
+    setShowNoConfirmation(true);
+  }
   return (
     <>
       <div className={styles.modal_container}>
@@ -29,7 +33,7 @@ function Modal({ setShowModal, data }) {
               &#10005;
             </div>
           </div>
-          {data && !showConfirm && (
+          {data && !showConfirm && !showNoConfirmation && (
             <div className={styles.modal_content}>
               <div className={styles.data_container}>
                 <div className={styles.summary}>
@@ -37,7 +41,9 @@ function Modal({ setShowModal, data }) {
                   <div>{data}?</div>
                 </div>
                 <button onClick={handleYesClick}>Yes</button>
-                <button className="secondary_button">No</button>
+                <button onClick={handleNoClick} className="secondary_button">
+                  No
+                </button>
               </div>
             </div>
           )}
@@ -47,6 +53,11 @@ function Modal({ setShowModal, data }) {
                 Great! We hope you had a nice trip
               </div>
               <SlEmotsmile />
+            </div>
+          )}
+          {showNoConfirmation && (
+            <div className={styles.modal_content}>
+              <div className={styles.summary}>Oops! Please call 911</div>
             </div>
           )}
         </div>
