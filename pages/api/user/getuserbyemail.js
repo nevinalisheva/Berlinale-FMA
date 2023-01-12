@@ -1,13 +1,9 @@
-import connection from "../auth/lib/db";
-
 export default async function handler(req, res) {
-  const { user_id } = req.query;
-  const query =
-    "SELECT *, c.company_name AS user_company FROM user u LEFT JOIN company c ON u.company_id = c.company_id WHERE u.user_id = " +
-    user_id;
+  const query = "SELECT user_id FROM user WHERE user_email = ?";
+
   connection
     .promise()
-    .query(query)
+    .query(query, [user_email])
     .then(([result]) => {
       res.json(result);
     })
