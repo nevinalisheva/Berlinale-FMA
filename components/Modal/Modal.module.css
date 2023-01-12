@@ -21,15 +21,16 @@
   margin: 16px auto;
 }
 .modal_header {
+  font-size: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 16px;
   color: var(--highlight-color);
 }
-.header_text {
-  font-weight: bold;
+.modal_header p {
   text-transform: uppercase;
+  font-size: 1rem;
 }
 .header_x {
   cursor: pointer;
@@ -37,8 +38,19 @@
 .headline {
   font-size: 1.4em;
 }
+.modal_content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal_content svg {
+  font-size: 2rem;
+  color: var(--highlight-color);
+}
 .summary {
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 1.1em;
   margin: 2rem auto;
   line-height: 1.3;
@@ -48,6 +60,7 @@
   font-size: 2rem;
   margin: 1rem;
 }
+
 @media screen and (min-width: 700px) {
   .summary {
     margin: 16px;
