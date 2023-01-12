@@ -18,7 +18,7 @@ const VehicleById = () => {
         vehicle_brand: "Ford",
         vehicle_model: "peagot 206",
         mileage: 333999,
-        availability: false,
+        availability: true,
         plate_no: "plate_no",
         location_id: 3,
         image: null,
@@ -34,26 +34,25 @@ const VehicleById = () => {
     // if (!data) return <div>Loading...</div>
 
   return (
-    <div>
+    <div className={styles.main}>
       <div className={styles.container}>
         <div className={styles.img}>
-        <Image
-          src={data.image ? data.image : "/Image_not_available.png"}
-          alt="vehicle-image"
-          width={400}
-          height={400}
-          
-        />
+          <Image
+            src={data.image ? data.image : "/Image_not_available.png"}
+            alt="vehicle-image"
+            width={400}
+            height={400}
+          />
         </div>
         <div className={styles.desc}>
           <div className={styles.info}>
             <h1>{data.vehicle_name}</h1>
-            <div className={styles.details}
-            {data.vehicle_brand && <p>{data.vehicle_brand}</p>}
-            {data.vehicle_model && <p>{data.vehicle_model}</p>}
-            {data.vehicle_desc && <p>{data.vehicle_desc}</p>}
-            {data.plate_no && <p>{data.plate_no}</p>}
-            {data.mileage && <p>{data.mileage}</p>}
+            <div className={styles.details}>
+              {data.vehicle_brand && <p>Brand: {data.vehicle_brand}</p>}
+              {data.vehicle_model && <p>Model: {data.vehicle_model}</p>}
+              {data.vehicle_desc && <p>Description: {data.vehicle_desc}</p>}
+              {data.plate_no && <p>Plate number: {data.plate_no}</p>}
+              {data.mileage && <p>Mileage: {data.mileage}</p>}
             </div>
           </div>
           {data.availability ? (
@@ -61,8 +60,8 @@ const VehicleById = () => {
           ) : (
             <button className="{styles.booked-button}">Booked out</button>
           )}
+          {!data.availability && <p>Oops, this vehicle is not available for booking anymore...</p>}
         </div>
-       
       </div>
     </div>
   );

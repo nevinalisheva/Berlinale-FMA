@@ -10,19 +10,27 @@
 }
 .info {
     margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 .img {
     display: flex;
     margin: auto;
-    justify-content:center
+    justify-content:center;
+    padding-bottom: 2rem;
 }
 .details {
-    display: flex;
-    margin: auto;
-    justify-content:center
+    padding: 1rem;
 }
+.main {
+        /* display: flex; */
+        height: 85vh;
+        margin-top: 2rem;
+    }
 
-@media screen and (min-width:600px) {
+@media screen and (min-width:700px) {
     .container{
     display: grid;
 
@@ -30,6 +38,12 @@
     }
     .details {
         display: block
+    }
+    .info {
+        display:block
+    }
+    .main {
+        display: grid;
     }
     
 }
