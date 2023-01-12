@@ -34,7 +34,7 @@ function UserProfile() {
   useEffect(() => {
     if (userId) {
       axios
-        .get(`/api/userprofile/${userId}`)
+        .get(`/api/user/${userId}`)
         .then((response) => setUserData(response))
         .catch((err) => console.log(err));
     }
@@ -46,7 +46,10 @@ function UserProfile() {
       <UserInfoCard data={userData} />
       <div className={styles.current_booking}>
         <h2>Your next rental</h2>
-        <RentalDetailsCard data={userData.current_rental} user_id={userData.id}/>
+        <RentalDetailsCard
+          data={userData.current_rental}
+          user_id={userData.id}
+        />
       </div>
     </div>
   );

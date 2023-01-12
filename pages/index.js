@@ -7,10 +7,8 @@ import { useSession, signIn, signOut } from "next-auth/react";
 export default function Home() {
   // const inter = Inter({ subsets: ["latin"] });
   const { data: session } = useSession();
-  console.log(session, "sesson");
 
   if (session) {
-    // console.log(loading, "sdsdsd");
     return (
       <>
         <Head>
@@ -18,18 +16,25 @@ export default function Home() {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
-        <main>
-          signed in as {session.user.email}
+        <main className={styles.container}>
+          <li>
+            <ul>Name: {session.user.name}</ul>
+            <ul>Email: {session.user.email}</ul>
+          </li>
+          <button>I'm a Customer</button>
+          <button>I'm a Company</button>
+          <div className={styles.or}>OR</div>
           <button onClick={() => signOut()}>sign out</button>
-          <div>möp</div>
         </main>
       </>
     );
   }
   return (
     <>
-      <p>sign in </p>
-      <button onClick={() => signIn()}>sign in </button>
+      <main className={styles.container}>
+        <p>sign in </p>
+        <button onClick={() => signIn()}>sign in</button>
+      </main>
     </>
   );
 }
