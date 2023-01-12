@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "./RentalDetailsCard.module.css";
 import Image from "next/image";
 import DropOffModal from "../DropOffModal/DropOffModal";
+import CancelModal from "../CancelModal/CancelModal";
 
 function RentalDetailsCard({ data }) {
   const [showModal, setShowModal] = useState(false);
@@ -53,6 +54,9 @@ function RentalDetailsCard({ data }) {
       </div>
       {showModal && (
         <DropOffModal setShowModal={setShowModal} data={data.drop_of_venue} />
+      )}
+      {showCancelModal && (
+        <CancelModal setShowModal={setShowCancelModal} data={data.id} />
       )}
     </>
   );
