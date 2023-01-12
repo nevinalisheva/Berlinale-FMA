@@ -3,8 +3,7 @@ import connection from "../../auth/lib/db";
 export default async function handler(req, res) {
   const { id } = req.query;
   let query =
-    "UPDATE booking SET is_active= NOT is_active WHERE vehicle_id= " +
-    vehicle_id;
+    "UPDATE booking SET is_active= NOT is_active WHERE vehicle_id= " + id;
 
   connection
     .promise()

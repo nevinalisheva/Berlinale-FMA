@@ -47,9 +47,8 @@ function DropOffModal({ setShowModal, data, clicked, title, user_id, car_id }) {
 
   function handleYesClick(e) {
     e.preventDefault();
-    console.log(car_id);
     axios
-      .put(`/api/vehicles/${car_id}`)
+      .put(`/api/bookings/update/${car_id}`)
       .then((response) => console.log(response))
       .catch((err) => console.log(err));
     setShowConfirm(true);
