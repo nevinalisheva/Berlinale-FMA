@@ -24,15 +24,25 @@ const VehicleCard = (props) => {
         <Image
           src={image ? image : "/Image_not_available.png"}
           alt="vehicle-image"
-          width={400}
-          height={400}
+          layout="fill"
           className={styles.img}
         />
       </div>
       <div className={styles.vehicleListBottomContainer}>
         <h2>{vehicle_name}</h2>
-        {vehicle_brand && <p>Brand: {vehicle_brand}</p>}
-        {vehicle_model && <p>Model: {vehicle_model}</p>}
+        <div>
+          {vehicle_brand && (
+            <p>
+              <b>Brand: </b> {vehicle_brand}
+            </p>
+          )}
+          {vehicle_model && (
+            <p>
+              <b>Model: </b> {vehicle_model}
+            </p>
+          )}
+        </div>
+
         <Link
           className="button"
           key={vehicle_id}

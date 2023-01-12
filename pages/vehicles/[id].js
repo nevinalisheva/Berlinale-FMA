@@ -7,10 +7,10 @@ import { useState } from "react";
 import DropOffModal from "../../components/DropOffModal/DropOffModal";
 
 const fetcher = async () => {
-    const response = await fetch('url')
-    const data = await response.json()
-    return data
-}
+  const response = await fetch("url");
+  const data = await response.json();
+  return data;
+};
 
 const VehicleById = () => {
   const [clicked, setClicked] = useState(false);
@@ -39,13 +39,13 @@ const VehicleById = () => {
     let user_id = 1;
       
 
-    // const router = useRouter();
-    // const {id} = router.query;
+  // const router = useRouter();
+  // const {id} = router.query;
 
-    // const { data, error } = useSWR(id ? `/api/vehicles/${id}` : null, fetcher)
+  // const { data, error } = useSWR(id ? `/api/vehicles/${id}` : null, fetcher)
 
-    // if (error) return <div>Failed to load</div>
-    // if (!data) return <div>Loading...</div>
+  // if (error) return <div>Failed to load</div>
+  // if (!data) return <div>Loading...</div>
 
   return (
     <div className={styles.main}>
