@@ -1,15 +1,13 @@
-.container {
-  position: fixed;
-  top: 0;
-  width: 100vw;
-  background-color: var(--background);
-  z-index: 5;
-}
 .nav {
+  position: fixed;
+  padding: 1rem;
+  width: 100%;
+  top: 0;
   display: flex;
   justify-content: space-between;
-  position: relative;
   overflow-x: hidden;
+  background-color: var(--background);
+  z-index: 5;
 }
 .menu {
   display: flex;
@@ -19,7 +17,6 @@
 .navigation {
   display: flex;
   width: 100vw;
-  margin: 1rem;
   align-items: center;
   justify-content: space-between;
   z-index: 4;
@@ -79,12 +76,12 @@
 
 @media (min-width: 768px) {
   .nav {
+    width: 100vw;
     height: 4rem;
     flex-direction: row;
     justify-content: flex-end;
     align-items: center;
-    margin: 0 1rem;
-    position: relative;
+    padding: 1rem 2rem;
   }
   .burger_menu {
     display: none;
