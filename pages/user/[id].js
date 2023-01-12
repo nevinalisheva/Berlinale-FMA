@@ -30,6 +30,7 @@ function UserProfile() {
   const { id } = router.query;
   const [userId] = useState(1);
   const [userData, setUserData] = useState(dummyUser);
+  const [carDestination, setCarDestination] = useState(null);
   const [carData, setCarData] = useState(null);
 
   useEffect(() => {
@@ -44,6 +45,15 @@ function UserProfile() {
       .catch((err) => console.log(err));
   }, []);
 
+  useEffect(() => {
+    if (carData) {
+      axios
+        .get(`/api/locations/vehicle/${carData.vehicle_id}`)
+        .then((response) => setCarDestination(response.data[0]))
+        .catch((err) => console.log(err));
+    }
+  }, [carData]);
+
   if (userId) {
     return (
       <div className={styles.container}>
@@ -51,7 +61,13 @@ function UserProfile() {
         <UserInfoCard data={userData} />
         <div className={styles.current_booking}>
           <h2>Your next rental</h2>
-          {carData && <RentalDetailsCard data={carData} user_id={userId} />}
+          {carData && (
+            <RentalDetailsCard
+              data={carData}
+              user_id={userId}
+              destination={carDestination}
+            />
+          )}
         </div>
       </div>
     );
