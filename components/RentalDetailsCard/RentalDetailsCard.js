@@ -4,7 +4,7 @@ import Image from "next/image";
 import DropOffModal from "../DropOffModal/DropOffModal";
 import CancelModal from "../CancelModal/CancelModal";
 
-function RentalDetailsCard({ data }) {
+function RentalDetailsCard({ data, user_id }) {
   const [showModal, setShowModal] = useState(false);
   const [showCancelModal, setShowCancelModal] = useState(false);
   return (
@@ -53,7 +53,7 @@ function RentalDetailsCard({ data }) {
         </div>
       </div>
       {showModal && (
-        <DropOffModal setShowModal={setShowModal} data={data.drop_of_venue} />
+        <DropOffModal setShowModal={setShowModal} user_id={user_id} data={data.drop_of_venue} title="Return the vehicle" />
       )}
       {showCancelModal && (
         <CancelModal setShowModal={setShowCancelModal} data={data.id} />
