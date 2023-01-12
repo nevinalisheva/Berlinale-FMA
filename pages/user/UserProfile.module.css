@@ -1,4 +1,6 @@
 .container {
+  position: absolute;
+  top: 4rem;
   margin: 1rem;
 }
 .container h1 {

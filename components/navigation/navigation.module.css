@@ -1,18 +1,16 @@
 .container {
   position: fixed;
+  top: 0;
   width: 100vw;
   background-color: var(--background);
-  backdrop-filter: blur(10px);
   z-index: 5;
 }
-
 .nav {
   display: flex;
   justify-content: space-between;
   position: relative;
   overflow-x: hidden;
 }
-
 .menu {
   display: flex;
   justify-content: space-between;
