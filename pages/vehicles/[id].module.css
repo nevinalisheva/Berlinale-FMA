@@ -31,7 +31,7 @@
   padding-top: 1rem;
 }
 .main {
-        height: 75vh;
+        /* height: 75vh; */
         margin-top: 4rem;
         margin-bottom: 10vh;
     }
@@ -42,6 +42,11 @@
   margin-right: 30px;
 }
 @media screen and (min-width: 700px) {
+    .main {
+        /* height: 75vh; */
+        margin-top: 4rem;
+        margin-bottom: 10vh;
+    }
   .container {
     display: grid;
 

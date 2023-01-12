@@ -1,7 +1,6 @@
 import { SessionProvider } from "next-auth/react";
 import Footer from "../components/footer/Footer";
 import Navigation from "../components/navigation/Navigation";
-import Footer from "../components/footer/Footer";
 import "../styles/globals.css";
 export default function App({
   Component,
