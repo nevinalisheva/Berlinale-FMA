@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import styles from "./CancelModal.module.css";
-import { SlEmotsmile } from "react-icons/sl";
 
 function CancelModal({ setShowModal, data }) {
   const [showConfirm, setShowConfirm] = useState(false);
@@ -12,7 +11,6 @@ function CancelModal({ setShowModal, data }) {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    console.log();
   }, [data]);
 
   function handleYesClick(e) {

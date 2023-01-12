@@ -28,31 +28,35 @@ function UserProfile() {
   };
   const router = useRouter();
   const { id } = router.query;
-  const [userId] = useState(id);
+  const [userId] = useState(1);
   const [userData, setUserData] = useState(dummyUser);
+  const [carData, setCarData] = useState(null);
 
   useEffect(() => {
-    if (userId) {
-      axios
-        .get(`/api/user/${userId}`)
-        .then((response) => setUserData(response))
-        .catch((err) => console.log(err));
-    }
+    axios
+      .get(`/api/user/${userId}`)
+      .then((response) => setUserData(response.data[0]))
+      .catch((err) => console.log(err));
+
+    axios
+      .get(`/api/rent/${userId}`)
+      .then((response) => setCarData(response.data[0]))
+      .catch((err) => console.log(err));
   }, []);
 
-  return (
-    <div className={styles.container}>
-      <h1>{userData.is_admin ? "Admin" : "User"} Profile</h1>
-      <UserInfoCard data={userData} />
-      <div className={styles.current_booking}>
-        <h2>Your next rental</h2>
-        <RentalDetailsCard
-          data={userData.current_rental}
-          user_id={userData.id}
-        />
+  if (userId) {
+    return (
+      <div className={styles.container}>
+        <h1>{userData.is_admin ? "Admin" : "User"} Profile</h1>
+        <UserInfoCard data={userData} />
+        <div className={styles.current_booking}>
+          <h2>Your next rental</h2>
+          {carData && <RentalDetailsCard data={carData} user_id={userId} />}
+        </div>
       </div>
-    </div>
-  );
+    );
+  }
+  return <div className={styles.container}>You shouldn't be here</div>;
 }
 
 export default UserProfile;

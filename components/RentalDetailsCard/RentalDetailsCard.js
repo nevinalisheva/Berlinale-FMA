@@ -7,15 +7,19 @@ import CancelModal from "../CancelModal/CancelModal";
 function RentalDetailsCard({ data, user_id }) {
   const [showModal, setShowModal] = useState(false);
   const [showCancelModal, setShowCancelModal] = useState(false);
+
   return (
     <>
       <div className={styles.rental_details}>
-        <Image
-          alt={data.vehicle_name}
-          src={data.vehicle_image}
-          layout="intrinsic"
-          priority
-        />
+        {data.image && (
+          <Image
+            alt={data.vehicle_name}
+            src={data.image}
+            layout="intrinsic"
+            priority
+          />
+        )}
+
         <div>
           <table>
             <tbody>
@@ -29,11 +33,11 @@ function RentalDetailsCard({ data, user_id }) {
               </tr>
               <tr>
                 <td>Rental Company:</td>
-                <td>{data.company_name}</td>
+                <td>{data.car_company}</td>
               </tr>
               <tr>
                 <td>Pick up Location:</td>
-                <td>{data.pick_up_venue}</td>
+                <td>{data.venue_name}</td>
               </tr>
               <tr>
                 <td>Drop off Location:</td>
@@ -53,10 +57,15 @@ function RentalDetailsCard({ data, user_id }) {
         </div>
       </div>
       {showModal && (
-        <DropOffModal setShowModal={setShowModal} user_id={user_id} data={data.drop_of_venue} title="Return the vehicle" />
+        <DropOffModal
+          setShowModal={setShowModal}
+          user_id={user_id}
+          data={data.venue_name}
+          title="Return the vehicle"
+        />
       )}
       {showCancelModal && (
-        <CancelModal setShowModal={setShowCancelModal} data={data.id} />
+        <CancelModal setShowModal={setShowCancelModal} data={data.vehicle_id} />
       )}
     </>
   );
