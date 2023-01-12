@@ -7,7 +7,8 @@
 .formContainer input[type="text"],
 .formContainer input[type="number"],
 .formContainer input[type="file"],
-.formContainer textarea {
+.formContainer textarea,
+.formContainer select {
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;

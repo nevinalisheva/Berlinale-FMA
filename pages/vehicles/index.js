@@ -35,10 +35,10 @@ import styles from "./index.module.css";
 
 const VehicleList = () => {
   const [selected, setSelected] = useState("");
-  const [addVehicle, setAddVehicle] = useState(false);
+  const [addCompontentVehicle, setAddComponentVehicle] = useState(false);
 
   const handleAddVehicule = () => {
-    setAddVehicle(!addVehicle);
+    setAddComponentVehicle(!addCompontentVehicle);
   };
 
   //FILTER THE TRUE WITH QUERY WHEN FETCHING the database
@@ -115,33 +115,39 @@ const VehicleList = () => {
   ];
   return (
     <div className={styles.container}>
-      <h1>Cars available</h1>
+      <h1>Vehicles available</h1>
       {/* show only if user is a compagny */}
-      <button onClick={handleAddVehicule}>Add vehicule</button>
+      <button onClick={handleAddVehicule}>Add vehicle</button>
       {/* show if Add vehiicule is clicked */}
-      {addVehicle && <AddVehicule />}
+      {addCompontentVehicle && <AddVehicule />}
 
       {/* show form only if user is a client */}
-      <form>
-        <label htmlFor="location-selec">
-          Filter by location {""}
-          <select
-            id="location-selec"
-            value={selected}
-            onChange={(e) => setSelected(e.target.value)}
-          >
-            <option value="">---</option>
-            {locations.map((location) => {
-              return (
-                <option key={location.location_id} value={location.location_id}>
-                  {" "}
-                  {location.venu_name}
-                </option>
-              );
-            })}
-          </select>
-        </label>
-      </form>
+      <div className={styles.filterContainer}>
+        <form>
+          <label htmlFor="location-selec">
+            Location {""}
+            <select
+              id="location-selec"
+              value={selected}
+              onChange={(e) => setSelected(e.target.value)}
+            >
+              <option value="">---</option>
+              {locations.map((location) => {
+                return (
+                  <option
+                    key={location.location_id}
+                    value={location.location_id}
+                  >
+                    {" "}
+                    {location.venu_name}
+                  </option>
+                );
+              })}
+            </select>
+          </label>
+        </form>
+      </div>
+
       <div>
         {carList
           .filter((car) => !selected.length || car.location_id == selected)
