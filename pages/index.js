@@ -7,7 +7,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 export default function Home() {
   // const inter = Inter({ subsets: ["latin"] });
   const { data: session } = useSession();
-  // console.log(session.user.email, "sesson");
+  console.log(session, "sesson");
 
   if (session) {
     // console.log(loading, "sdsdsd");
