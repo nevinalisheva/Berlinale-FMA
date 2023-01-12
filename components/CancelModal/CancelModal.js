@@ -1,13 +1,15 @@
 import { useEffect, useState } from "react";
 import styles from "./CancelModal.module.css";
+import axios from "axios";
 
-function CancelModal({ setShowModal, data }) {
+function CancelModal({ setShowModal, data, setCarVisible }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [showNoConfirmation, setShowNoConfirmation] = useState(false);
   function handleClick() {
     setShowModal(false);
     document.body.style.overflow = "scroll";
   }
+  console.log(data);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -20,7 +22,22 @@ function CancelModal({ setShowModal, data }) {
   }
   function handleNoClick(e) {
     e.preventDefault();
+    axios
+      .put(`/api/vehicles/${data}`)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+    axios
+      .put(`/api/bookings/update/${data}`)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
     setShowNoConfirmation(true);
+
+    const timer = setTimeout(() => {
+      setCarVisible(false);
+    }, 1500);
+    return () => {
+      clearInterval(timer);
+    };
   }
   return (
     <>

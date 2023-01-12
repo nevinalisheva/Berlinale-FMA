@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./RentalDetailsCard.module.css";
 import Image from "next/image";
 import DropOffModal from "../DropOffModal/DropOffModal";
 import CancelModal from "../CancelModal/CancelModal";
 
-function RentalDetailsCard({ data, user_id, destination }) {
+function RentalDetailsCard({ data, user_id, destination, setCarVisible }) {
   const [showModal, setShowModal] = useState(false);
   const [showCancelModal, setShowCancelModal] = useState(false);
 
@@ -61,11 +61,17 @@ function RentalDetailsCard({ data, user_id, destination }) {
           setShowModal={setShowModal}
           user_id={user_id}
           data={data.venue_name}
+          car_id={data.vehicle_id}
           title="Return the vehicle"
+          setCarVisible={setCarVisible}
         />
       )}
       {showCancelModal && (
-        <CancelModal setShowModal={setShowCancelModal} data={data.vehicle_id} />
+        <CancelModal
+          setShowModal={setShowCancelModal}
+          data={data.vehicle_id}
+          setCarVisible={setCarVisible}
+        />
       )}
     </>
   );

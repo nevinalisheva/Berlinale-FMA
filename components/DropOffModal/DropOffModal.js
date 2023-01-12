@@ -2,8 +2,17 @@ import { useEffect, useState } from "react";
 import styles from "./DropOffModal.module.css";
 import { SlEmotsmile } from "react-icons/sl";
 import { useRouter } from "next/router";
+import axios from "axios";
 
-function DropOffModal({ setShowModal, data, clicked, title, user_id }) {
+function DropOffModal({
+  setShowModal,
+  data,
+  clicked,
+  title,
+  user_id,
+  car_id,
+  setCarVisible,
+}) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [showNoConfirmation, setShowNoConfirmation] = useState(false);
   const [selected, setSelected] = useState("");
@@ -41,12 +50,22 @@ function DropOffModal({ setShowModal, data, clicked, title, user_id }) {
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    console.log();
   }, [data]);
 
   function handleYesClick(e) {
     e.preventDefault();
+    axios
+      .put(`/api/bookings/update/${car_id}`)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
     setShowConfirm(true);
+
+    const timer = setTimeout(() => {
+      setCarVisible(false);
+    }, 1500);
+    return () => {
+      clearInterval(timer);
+    };
   }
   function handleNoClick(e) {
     e.preventDefault();
@@ -120,7 +139,10 @@ function DropOffModal({ setShowModal, data, clicked, title, user_id }) {
           )}
           {showNoConfirmation && (
             <div className={styles.modal_content}>
-              <div className={styles.summary}>Oops! Please call 911</div>
+              <div className={styles.summary}>
+                Oops! Please call 0800 5647382 to tell us where you are dropping
+                off the car.
+              </div>
             </div>
           )}
         </div>

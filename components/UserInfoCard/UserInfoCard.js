@@ -8,7 +8,7 @@ function UserInfoCard({ data }) {
       <div>
         <div>{data.user_name}</div>
         <div>{data.user_email}</div>
-        <div>{data.info}</div>
+        <div>{data.user_info}</div>
       </div>
       <FiEdit2 className={styles.icon} />
     </div>

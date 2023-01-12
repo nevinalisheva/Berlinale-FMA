@@ -1,8 +1,7 @@
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./UserProfile.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
-import dummyImage from "../../assets/dummy.jpg";
 import RentalDetailsCard from "../../components/RentalDetailsCard/RentalDetailsCard";
 import UserInfoCard from "../../components/UserInfoCard/UserInfoCard";
 
@@ -13,13 +12,13 @@ function UserProfile() {
   const [userData, setUserData] = useState(null);
   const [carDestination, setCarDestination] = useState(null);
   const [carData, setCarData] = useState(null);
+  const [carVisible, setCarVisible] = useState(true);
 
   useEffect(() => {
     setUserId(location.pathname.split("/user/")[1]);
   }, []);
 
   useEffect(() => {
-    console.log(userId);
     if (userId) {
       axios
         .get(`/api/user/${userId}`)
@@ -40,6 +39,7 @@ function UserProfile() {
         .then((response) => setCarDestination(response.data[0]))
         .catch((err) => console.log(err));
     }
+    console.log(carData);
   }, [carData]);
 
   if (userId) {
@@ -51,16 +51,19 @@ function UserProfile() {
             <UserInfoCard data={userData} />
           </>
         )}
-        <div className={styles.current_booking}>
-          <h2>Your next rental</h2>
-          {carData && (
-            <RentalDetailsCard
-              data={carData}
-              user_id={userId}
-              destination={carDestination}
-            />
-          )}
-        </div>
+        {carData && carData.is_active !== 0 && carVisible && (
+          <div className={styles.current_booking}>
+            <h2>Your next rental</h2>
+            {carData && (
+              <RentalDetailsCard
+                data={carData}
+                user_id={userId}
+                destination={carDestination}
+                setCarVisible={setCarVisible}
+              />
+            )}
+          </div>
+        )}
       </div>
     );
   }
