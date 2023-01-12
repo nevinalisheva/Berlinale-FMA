@@ -41,7 +41,7 @@ function RentalDetailsCard({ data, user_id, destination }) {
               </tr>
               <tr>
                 <td>Drop off Location:</td>
-                <td>{destination.venue_name}</td>
+                <td>{destination && destination.venue_name}</td>
               </tr>
             </tbody>
           </table>
