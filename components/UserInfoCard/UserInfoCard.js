@@ -6,9 +6,9 @@ function UserInfoCard({ data }) {
   return (
     <div className={styles.profile_info}>
       <div>
-        <div>{data.name}</div>
+        <div>{data.user_name}</div>
         <div>{data.user_email}</div>
-        <div>{data.info}</div>
+        <div>{data.user_info}</div>
       </div>
       <FiEdit2 className={styles.icon} />
     </div>
