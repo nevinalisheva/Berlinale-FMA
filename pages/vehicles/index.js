@@ -29,11 +29,17 @@
 //   );
 // };
 import React, { useState } from "react";
+import AddVehicule from "../../components/addVehicule/AddVehicule";
 import VehicleCard from "../../components/vehicleCard/VehicleCard";
 import styles from "./index.module.css";
 
 const VehicleList = () => {
   const [selected, setSelected] = useState("");
+  const [addVehicle, setAddVehicle] = useState(false);
+
+  const handleAddVehicule = () => {
+    setAddVehicle(!addVehicle);
+  };
 
   //FILTER THE TRUE WITH QUERY WHEN FETCHING the database
 
@@ -110,6 +116,12 @@ const VehicleList = () => {
   return (
     <div className={styles.container}>
       <h1>Cars available</h1>
+      {/* show only if user is a compagny */}
+      <button onClick={handleAddVehicule}>Add vehicule</button>
+      {/* show if Add vehiicule is clicked */}
+      {addVehicle && <AddVehicule />}
+
+      {/* show form only if user is a client */}
       <form>
         <label htmlFor="location-selec">
           Filter by location {""}
@@ -142,11 +154,3 @@ const VehicleList = () => {
 };
 
 export default VehicleList;
-
-//{
-/*<Link key={car.vehicle_id} to={`/vehicule/${car.vehicule_id}`}>
-                  
-                </Link>*/
-//}
-
-// export default Details;

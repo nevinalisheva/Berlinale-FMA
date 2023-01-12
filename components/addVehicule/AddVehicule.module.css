@@ -1,0 +1,54 @@
+.formContainer {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.formContainer input[type="text"],
+.formContainer input[type="number"],
+.formContainer input[type="file"],
+.formContainer textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.formContainer label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+.col30,
+.col70 {
+  float: none;
+  width: 100%;
+  margin-top: 0;
+}
+
+.formContainer input[type="submit"] {
+  margin-top: 1rem;
+  cursor: pointer;
+  width: 10rem;
+}
+
+.formContainer .row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media screen and (min-width: 760px) {
+  .col30 {
+    float: left;
+    width: 30%;
+    margin-top: 6px;
+  }
+
+  .col70 {
+    float: left;
+    width: 70%;
+    margin-top: 6px;
+  }
+}
