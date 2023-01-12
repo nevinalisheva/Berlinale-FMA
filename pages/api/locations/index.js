@@ -1,7 +1,7 @@
 import connection from "../auth/lib/db";
 
 export default async function handler(req, res) {
-  const query = "SELECT DISTINCT venue_name FROM location";
+  const query = "SELECT DISTINCT venue_name, location_id FROM location";
   connection
     .promise()
     .query(query)
