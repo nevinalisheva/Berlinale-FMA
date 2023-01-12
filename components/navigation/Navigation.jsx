@@ -5,8 +5,11 @@ import { MdClose } from "react-icons/md";
 import { FiMenu } from "react-icons/fi";
 import { AiOutlineCar } from "react-icons/ai";
 import { MdAccountCircle, MdLogout, MdOutlineLogin } from "react-icons/md";
+import { useSession, signIn, signOut } from "next-auth/react";
 
+import nextAuth from "next-auth";
 function Navigation({ userID = 1 }) {
+  const { data: session } = useSession();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -30,7 +33,7 @@ function Navigation({ userID = 1 }) {
       </div>
       <div className={`${styles.menu} ${isMenuOpen ? styles.open : ""}`}>
         <ul className={styles.link_list}>
-          {isLoggedIn ? (
+          {session ? (
             <>
               <Link href={`/user/${userID}`}>
                 <li>
@@ -38,12 +41,12 @@ function Navigation({ userID = 1 }) {
                   <MdAccountCircle className={styles.burger_logo} />
                 </li>
               </Link>
-              <li onClick={() => setIsLoggedIn(false)}>
+              <li onClick={() => signOut()}>
                 LogOut <MdLogout className={styles.burger_logo} />
               </li>
             </>
           ) : (
-            <li onClick={() => setIsLoggedIn(true)}>
+            <li onClick={() => signIn(true)}>
               LogIn <MdOutlineLogin className={styles.burger_logo} />
             </li>
           )}
