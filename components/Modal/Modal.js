@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import styles from "./Modal.module.css";
-import { TfiCommentsSmiley } from "react-icons/Tfi";
 
 function Modal({ setShowModal, data }) {
   function handleClick() {
@@ -25,14 +24,12 @@ function Modal({ setShowModal, data }) {
           {data && (
             <div className={styles.modal_content}>
               <div className={styles.data_container}>
-                <h3>
-                  We hope you had a good ride
-                  <TfiCommentsSmiley />
-                </h3>
                 <div className={styles.summary}>
                   Is this your drop off location?:
-                  <span>{data}</span>
+                  <div>{data}</div>
                 </div>
+                <button>Yes</button>
+                <button className="secondary_button">No</button>
               </div>
             </div>
           )}
