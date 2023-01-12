@@ -2,7 +2,9 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import useSWR from 'swr';
 import styles from './[id].module.css';
-import img from "../../assets/dummy.jpg"
+import img from "../../assets/dummy.jpg";
+import { useState } from "react";
+import DropOffModal from "../../components/DropOffModal/DropOffModal";
 
 const fetcher = async () => {
     const response = await fetch('url')
@@ -11,6 +13,15 @@ const fetcher = async () => {
 }
 
 const VehicleById = () => {
+  const [clicked, setClicked] = useState(false);
+
+    const [showModal, setShowModal] = useState(false);
+    const [showCancelModal, setShowCancelModal] = useState(false);
+
+  const booking = () => {
+    setClicked(true);
+    setShowModal(true)
+  }
     let data = 
       {
         vehicle_id: 1,
@@ -25,6 +36,8 @@ const VehicleById = () => {
         image: null,
         company_id: 4,
       };
+    let user_id = 1;
+      
 
     // const router = useRouter();
     // const {id} = router.query;
@@ -103,7 +116,9 @@ const VehicleById = () => {
             </div>
           </div>
           {data.availability ? (
-            <button className={styles.button}>Book now</button>
+            <button className={styles.button} onClick={booking}>
+              Book now
+            </button>
           ) : (
             <button className={styles.button}>Booked out</button>
           )}
@@ -111,7 +126,12 @@ const VehicleById = () => {
             <p>Oops, this vehicle is not available for booking anymore...</p>
           )}
         </div>
+        
+       
       </div>
+      {showModal && (
+        <DropOffModal setShowModal={setShowModal} data={data.drop_of_venue} clicked={clicked} title="Where are you headed?" user_id={user_id}/>
+      )}
     </div>
   );
 };

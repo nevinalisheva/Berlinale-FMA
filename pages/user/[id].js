@@ -46,7 +46,7 @@ function UserProfile() {
       <UserInfoCard data={userData} />
       <div className={styles.current_booking}>
         <h2>Your next rental</h2>
-        <RentalDetailsCard data={userData.current_rental} />
+        <RentalDetailsCard data={userData.current_rental} user_id={userData.id}/>
       </div>
     </div>
   );
