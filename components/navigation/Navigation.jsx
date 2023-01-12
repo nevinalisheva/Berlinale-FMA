@@ -37,10 +37,8 @@ function Navigation({ userID = 1 }) {
             <>
               <Link href={`/vehicles`}>
                 <li>
-                  <button>
-                    Find a Car
-                    <AiOutlineCar />
-                  </button>
+                  Find a Car
+                  <AiOutlineCar />
                 </li>
               </Link>
               <Link href={`/user/${userID}`}>
