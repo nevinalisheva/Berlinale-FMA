@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./CancelModal.module.css";
+import axios from "axios";
 
 function CancelModal({ setShowModal, data }) {
   const [showConfirm, setShowConfirm] = useState(false);
@@ -8,6 +9,7 @@ function CancelModal({ setShowModal, data }) {
     setShowModal(false);
     document.body.style.overflow = "scroll";
   }
+  console.log(data);
 
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -20,6 +22,14 @@ function CancelModal({ setShowModal, data }) {
   }
   function handleNoClick(e) {
     e.preventDefault();
+    axios
+      .put(`/api/vehicles/${data}`)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+    axios
+      .put(`/api/bookings/update/${data}`)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
     setShowNoConfirmation(true);
   }
   return (
