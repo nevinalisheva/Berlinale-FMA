@@ -7,9 +7,9 @@ import { useSession, signIn, signOut } from "next-auth/react";
 export default function Home() {
   // const inter = Inter({ subsets: ["latin"] });
   const { data: session } = useSession();
-  console.log(session, "sesson");
+  // console.log(session.user.email, "sesson");
 
-  if (session.user.email) {
+  if (session) {
     // console.log(loading, "sdsdsd");
     return (
       <>
@@ -19,6 +19,7 @@ export default function Home() {
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <main>
+          signed in as {session.user.email}
           <button onClick={() => signOut()}>sign out</button>
           <div>möp</div>
         </main>
