@@ -14,14 +14,24 @@ import axios from 'axios';
 //   const data = await response.json();
 //   return data;
 // };
+const fetcher = async () => {
+  const response = await fetch("http://localhost:3000/api/locations");
+  const data= await response.json();
+  return data;
+};
 
 const VehicleById = () => {
   const [clicked, setClicked] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+
+  const { data:locations, error} = useSWR("/api/locations", fetcher);
+  console.log(locations);
+
 
   // const router = useRouter();
   // const {id} = router.query;
 
-    const [showModal, setShowModal] = useState(false);
+   
 
   const booking = () => {
     setClicked(true);
@@ -41,7 +51,7 @@ const VehicleById = () => {
         image: null,
         company_id: 4,
       };
-    let user_id = 1;
+    let user_id = 8;
     let isCustomer=true;
     let isCompany=false;
 
@@ -71,7 +81,9 @@ const VehicleById = () => {
 
   // if (error) return <div>Failed to load</div>
   // if (!data) return <div>Loading...</div>
-  console.log(pickupData)
+  console.log(locations);
+    if (error) return <div>Failed to load</div>;
+    if (!locations) return <div>Loading...</div>;
 
   return (
     <div className={styles.main}>
@@ -155,10 +167,11 @@ const VehicleById = () => {
       {showModal && (
         <DropOffModal
           setShowModal={setShowModal}
-          // data={data.drop_of_venue}
+          locations={locations}
           clicked={clicked}
           title="Where are you headed?"
           user_id={user_id}
+          vehicle_id={data.vehicle_id}
         />
       )}
     </div>
