@@ -21,6 +21,7 @@ const fetcher = async () => {
 };
 
 const VehicleById = () => {
+  const [deleted, setDeleted] = useState(false)
   const [clicked, setClicked] = useState(false);
   const [showModal, setShowModal] = useState(false);
 
@@ -52,8 +53,8 @@ const VehicleById = () => {
         company_id: 4,
       };
     let user_id = 8;
-    let isCustomer=true;
-    let isCompany=false;
+    let isCustomer=false;
+    let isCompany=true;
 
      const router = useRouter();
      const { id } = router.query;
@@ -76,6 +77,16 @@ const VehicleById = () => {
             .catch((err) => console.log(err));
         }
       }, []);
+
+      function handleDelete(e) {
+        e.preventDefault();
+        axios
+          .delete(`/api/vehicles/${vehicleId}`)
+          .then((response) => console.log(response))
+          .catch((err) => console.log(err));
+        setDeleted(true);
+
+      }
 
   // const { data, error } = useSWR(id ? `/api/vehicles/${id}` : null, fetcher)
 
@@ -160,8 +171,11 @@ const VehicleById = () => {
             <p>Oops, this vehicle is not available for booking anymore...</p>
           )}
           {isCompany && (
-            <button className={styles.button}>Delete Listing</button>
+            <button className={styles.button} onClick={handleDelete}>
+              Delete Listing
+            </button>
           )}
+          {deleted && <h2>Successfully deleted!</h2>}
         </div>
       </div>
       {showModal && (

@@ -16,6 +16,7 @@ const fetcherLoc = async () => {
 };
 
 const VehicleList = () => {
+  const [companyData, setCompanyData] = useState("")
   const [selected, setSelected] = useState("");
   const { data: carList, error } = useSWR("/api/vehicles", fetcher);
   console.log(carList);
@@ -37,12 +38,20 @@ const VehicleList = () => {
   if (!locations) return <div>Loading...</div>;
 
   console.log("SELECTED", selected);
-
+  let isCompany=1;
+  let isCustomer=0;
+  // const handleCompanyListings = () => {
+  //   axios
+  //     .put(`/api/vehicles/company`)
+  //     .then((response) => setCompanyData(response.data[0]))
+  //     .catch((err) => console.log(err));
+  // }
+console.log(companyData)
   return (
     <div className={styles.container}>
       <h1>Cars available</h1>
       {/* show only if user is a compagny */}
-      <button onClick={handleAddVehicule}>Add vehicle</button>
+      {isCompany && <button onClick={handleAddVehicule}>Add vehicle</button>}
       {/* show if Add vehiicule is clicked */}
       {addCompontentVehicle && <AddVehicule />}
 
