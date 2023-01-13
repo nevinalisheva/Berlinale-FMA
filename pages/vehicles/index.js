@@ -1,4 +1,3 @@
-import Image from "next/image";
 import useSWR from "swr";
 import React, { useState } from "react";
 import VehicleCard from "../../components/vehicleCard/VehicleCard";
@@ -84,7 +83,19 @@ console.log(companyData)
         {carList
           .filter((car) => !selected.length || car.location_id == selected)
           .map((car) => {
-            return <VehicleCard car={car} key={car.vehicle_id} />;
+            let locationName;
+            locations.map((location) => {
+              if (car.location_id === location.location_id) {
+                locationName = location.venue_name;
+              }
+            });
+            return (
+              <VehicleCard
+                car={car}
+                key={car.vehicle_id}
+                locationName={locationName}
+              />
+            );
           })}
       </div>
     </div>
