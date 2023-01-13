@@ -3,40 +3,43 @@ import Image from "next/image";
 // import { Inter } from "@next/font/google";
 import styles from "../styles/Home.module.css";
 import { useSession, signIn, signOut } from "next-auth/react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function Home() {
   // const inter = Inter({ subsets: ["latin"] });
   const { data: session } = useSession();
-  const [isCustomer, setIsCustomer] = useState(false);
-  const [isCompany, setIsCompany] = useState(false);
+  const [iscompany, setIsCompany] = useState(false);
+  const [isCustomer, setIsCustomer] = useState(true);
 
-  // const handleRole = (e) => {
-  //   if (e.target.value === "1") {
-  //     setIsCompany(true);
-  //     setIsCustomer(false);
-  //   } else if (e.target.value === "0") {
-  //     setIsCustomer(true);
-  //     setIsCompany(false);
-  //   }
-  // };
-  if (isCompany || isCustomer) {
-    if (isCustomer) return "custumer";
-    return isCompany; //
+  const selectedValue = (e) => {
+    e.preventDefault();
+    setIsCompany(!iscompany);
+    setIsCustomer(!isCustomer);
+  };
+
+  const convert = (issomthing) => {
+    if (issomthing) {
+      return 0;
+    }
+    return 1;
+  };
+
+  console.log(iscompany, isCustomer);
+  console.log(session);
+  if (session) {
+    axios
+      .post("/api/user/insertuser", {
+        user_name: session.user.name,
+        user_email: session.user.email,
+        is_customer: convert(isCustomer),
+        is_company: convert(iscompany),
+        is_admin: 0,
+      })
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
   }
 
-  // const role = handleRole();
-  console.log("compant:", isCompany, "customer:", isCustomer);
-  // console.log(role, "selected role");
-  // const addUser = async () => {
-  //   const response = await fetch('/api/user/inseruser', {
-  //     method: 'POST',
-  //     body: JSON.stringify(),
-  //     headers: {
-  //       'content-Type'
-  //     }
-  //   })
-  // }
   if (session) {
     return (
       <>
@@ -54,29 +57,13 @@ export default function Home() {
           <button onClick={() => setIsCompany(1)}>I'm a Company</button>
           <div className={styles.or}>OR</div>
           <button onClick={() => signOut()}>sign out</button> */}
-          <div className="e-btn-group">
-            <input
-              onClick={handleRole}
-              type="radio"
-              id="radioleft"
-              name="align"
-              value="1"
-            />
-            <label className="e-btn" htmlFor="radioleft">
-              company
-            </label>
-
-            <input
-              onClick={handleRole}
-              type="radio"
-              id="radioright"
-              name="align"
-              value="0"
-            />
-            <label className="e-btn" htmlFor="radioright">
+          <select onChange={selectedValue}>
+            <option value={"company"}>company</option>
+            <option selected value={"customer"}>
               customer
-            </label>
-          </div>
+            </option>
+          </select>
+          <div className="e-btn-group"></div>
         </main>
       </>
     );
