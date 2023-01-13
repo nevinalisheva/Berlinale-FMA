@@ -48,26 +48,29 @@ const VehicleList = () => {
       {addCompontentVehicle && <AddVehicule />}
 
       {/* show form only if user is a client */}
-      <form>
-        <label htmlFor="location-selec">
-          Filter by location {""}
-          <select
-            id="location-selec"
-            value={selected}
-            onChange={(e) => setSelected(e.target.value)}
-          >
-            <option value="">---</option>
-            {locations.map((location, i) => {
-              return (
-                <option key={i} value={location.location_id}>
-                  {" "}
-                  {location.venue_name}
-                </option>
-              );
-            })}
-          </select>
-        </label>
-      </form>
+      <div className={styles.filterContainer}>
+        <form>
+          <label htmlFor="location-selec">
+            Filter by location {""}
+            <select
+              id="location-selec"
+              value={selected}
+              onChange={(e) => setSelected(e.target.value)}
+            >
+              <option value="">---</option>
+              {locations.map((location, i) => {
+                return (
+                  <option key={i} value={location.location_id}>
+                    {" "}
+                    {location.venue_name}
+                  </option>
+                );
+              })}
+            </select>
+          </label>
+        </form>
+      </div>
+
       <div>
         {carList
           .filter((car) => !selected.length || car.location_id == selected)
