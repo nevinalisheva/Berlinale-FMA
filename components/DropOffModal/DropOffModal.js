@@ -63,6 +63,10 @@ function DropOffModal({
   
   function handleConfirmation(e) {
     e.preventDefault();
+    axios
+      .put(`/api/vehicles/${vehicle_id}`)
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
 
     axios
       .post(`/api/bookings/insertBooking`, {
@@ -75,6 +79,7 @@ function DropOffModal({
       .catch((err) => console.log(err));
     setShowConfirm(true);
   }
+  
 
  
 console.log(selected)
