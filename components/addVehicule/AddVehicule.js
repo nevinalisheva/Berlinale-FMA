@@ -1,10 +1,9 @@
 import styles from "./AddVehicule.module.css";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 const AddVehicule = () => {
-  const [addVehicle, setAddVehicle] = useState({});
-
-  let locations = [
+  let dummy = [
     {
       location_id: 1,
       venu_name: "Postdamer platz",
@@ -18,6 +17,30 @@ const AddVehicule = () => {
       venu_name: "Berliner palast",
     },
   ];
+  const [addVehicle, setAddVehicle] = useState({});
+  const [locations, setLocations] = useState(dummy);
+
+  useEffect(() => {
+    axios
+      .get("/api/locations")
+      .then((response) => setLocations(response.data))
+      .catch((err) => console.log(err));
+  }, []);
+
+  // let locations = [
+  //   {
+  //     location_id: 1,
+  //     venu_name: "Postdamer platz",
+  //   },
+  //   {
+  //     location_id: 2,
+  //     venu_name: "Alexander platz",
+  //   },
+  //   {
+  //     location_id: 3,
+  //     venu_name: "Berliner palast",
+  //   },
+  // ];
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -30,23 +53,24 @@ const AddVehicule = () => {
     let image = e.target.image.value;
     let location = e.target.location.value;
 
-    let vehicle = {
-      vehicle_id: 3,
-      vehicle_name: name,
-      vehicle_desc: description,
-      vehicle_brand: brand,
-      vehicle_model: model,
-      mileage: mileage,
-      availability: true,
-      plate_no: plate,
-      location_id: location,
-      image: image,
-      company_id: "userid",
-    };
-
-    setAddVehicle(vehicle);
+    axios
+      .post(`/api/vehicles/insertVehicle`, {
+        vehicle_name: name,
+        vehicle_desc: description,
+        vehicle_brand: brand,
+        vehicle_model: model,
+        mileage: mileage,
+        plate_no: plate,
+        location_id: location,
+        image: image,
+        company_id: 1,
+        availability: 1,
+        vehicle_type: "car",
+      })
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
   };
-  console.log(addVehicle);
+
   return (
     <div className={styles.formContainer}>
       <form onSubmit={(e) => handleFormSubmit(e)}>
@@ -123,8 +147,7 @@ const AddVehicule = () => {
                     key={location.location_id}
                     value={location.location_id}
                   >
-                    {" "}
-                    {location.venu_name}
+                    {location.venue_name}
                   </option>
                 );
               })}

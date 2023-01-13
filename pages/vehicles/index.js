@@ -1,4 +1,3 @@
-import Image from "next/image";
 import useSWR from "swr";
 import React, { useState } from "react";
 import VehicleCard from "../../components/vehicleCard/VehicleCard";
