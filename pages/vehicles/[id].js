@@ -2,27 +2,42 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import useSWR from 'swr';
 import styles from './[id].module.css';
-import img from "../../assets/dummy.jpg";
-import { useState } from "react";
+import img from "../../public/Image_not_available.png";
+import { useState, useEffect } from "react";
 import DropOffModal from "../../components/DropOffModal/DropOffModal";
+import axios from 'axios';
 
+// const fetcher = async () => {
+//   let method = req.method;
+//   method=== "GET";
+//   const response = await fetch("http://localhost:3000/api/vehicles/[vehicle_id]");
+//   const data = await response.json();
+//   return data;
+// };
 const fetcher = async () => {
-  const response = await fetch("url");
-  const data = await response.json();
+  const response = await fetch("http://localhost:3000/api/locations");
+  const data= await response.json();
   return data;
 };
 
 const VehicleById = () => {
   const [clicked, setClicked] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
-    const [showModal, setShowModal] = useState(false);
-    const [showCancelModal, setShowCancelModal] = useState(false);
+  const { data:locations, error} = useSWR("/api/locations", fetcher);
+  console.log(locations);
+
+
+  // const router = useRouter();
+  // const {id} = router.query;
+
+   
 
   const booking = () => {
     setClicked(true);
     setShowModal(true)
   }
-    let data = 
+    let dataM = 
       {
         vehicle_id: 1,
         vehicle_name: "Ford Galaxie 500",
@@ -36,18 +51,39 @@ const VehicleById = () => {
         image: null,
         company_id: 4,
       };
-    let user_id = 1;
+    let user_id = 8;
     let isCustomer=true;
     let isCompany=false;
-      
 
-  // const router = useRouter();
-  // const {id} = router.query;
+     const router = useRouter();
+     const { id } = router.query;
+     const [vehicleId] = useState(id);
+     const [data, setData] = useState(dataM);
+     const [pickupData, setPickupData] = useState("");
+
+     useEffect(() => {
+       if (vehicleId) {
+         axios
+           .get(
+             `/api/vehicles/${vehicleId}`
+           )
+           .then((response) => setData(response.data[0]))
+           .catch((err) => console.log(err));
+
+          axios
+            .get(`/api/locations/vehicle/${vehicleId}`)
+            .then((response) => setPickupData(response.data[0]))
+            .catch((err) => console.log(err));
+        }
+      }, []);
 
   // const { data, error } = useSWR(id ? `/api/vehicles/${id}` : null, fetcher)
 
   // if (error) return <div>Failed to load</div>
   // if (!data) return <div>Loading...</div>
+  console.log(locations);
+    if (error) return <div>Failed to load</div>;
+    if (!locations) return <div>Loading...</div>;
 
   return (
     <div className={styles.main}>
@@ -99,19 +135,13 @@ const VehicleById = () => {
                     <td>
                       <strong>Rental Company: </strong>
                     </td>
-                    <td>{data.company_name}</td>
+                    <td>{pickupData.company_name}</td>
                   </tr>
                   <tr>
                     <td>
                       <strong>Pick up Location: </strong>
                     </td>
-                    <td>{data.pick_up_venue}</td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <strong>Drop off Location: </strong>
-                    </td>
-                    <td>{data.drop_of_venue}</td>
+                    <td>{pickupData.venue_name}</td>
                   </tr>
                 </tbody>
               </table>
@@ -137,10 +167,11 @@ const VehicleById = () => {
       {showModal && (
         <DropOffModal
           setShowModal={setShowModal}
-          data={data.drop_of_venue}
+          locations={locations}
           clicked={clicked}
           title="Where are you headed?"
           user_id={user_id}
+          vehicle_id={data.vehicle_id}
         />
       )}
     </div>

@@ -67,7 +67,7 @@ function UserProfile() {
       </div>
     );
   }
-  return <div className={styles.container}>You shouldn't be here</div>;
+  return <div className={styles.container}>You should not be here</div>;
 }
 
 export default UserProfile;
