@@ -21,8 +21,8 @@ export default function Home() {
             <ul>Name: {session.user.name}</ul>
             <ul>Email: {session.user.email}</ul>
           </li>
-          <button>I'm a Customer</button>
-          <button>I'm a Company</button>
+          <button>I am a Customer</button>
+          <button>I am a Company</button>
           <div className={styles.or}>OR</div>
           <button onClick={() => signOut()}>sign out</button>
         </main>

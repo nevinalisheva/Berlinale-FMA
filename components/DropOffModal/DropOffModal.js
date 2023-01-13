@@ -5,6 +5,7 @@ import { useRouter } from "next/router";
 import axios from "axios";
 
 function DropOffModal({
+  vehicle_id,
   setShowModal,
   data,
   clicked,
@@ -12,25 +13,12 @@ function DropOffModal({
   user_id,
   car_id,
   setCarVisible,
+  locations
 }) {
   const [showConfirm, setShowConfirm] = useState(false);
   const [showNoConfirmation, setShowNoConfirmation] = useState(false);
-  const [selected, setSelected] = useState("");
-
-  let locations = [
-    {
-      location_id: 1,
-      venu_name: "Postdamer platz",
-    },
-    {
-      location_id: 2,
-      venu_name: "Alexander platz",
-    },
-    {
-      location_id: 3,
-      venu_name: "Berliner palast",
-    },
-  ];
+  const [selected, setSelected] = useState(undefined);
+  
 
   function handleClick() {
     setShowModal(false);
@@ -71,7 +59,25 @@ function DropOffModal({
     e.preventDefault();
     setShowNoConfirmation(true);
   }
+   const destination = 7;
+  
+  function handleConfirmation(e) {
+    e.preventDefault();
 
+    axios
+      .post(`/api/bookings/insertBooking`, {
+        vehicle_id,
+        user_id,
+        destination: selected,
+        is_active: 1
+      })
+      .then((response) => console.log(response))
+      .catch((err) => console.log(err));
+    setShowConfirm(true);
+  }
+
+ 
+console.log(selected)
   return (
     <>
       <div className={styles.modal_container}>
@@ -89,7 +95,7 @@ function DropOffModal({
                 <select
                   id="location-selec"
                   value={selected}
-                  onChange={(e) => setSelected(e.target.value)}
+                  onChange={(e) => setSelected(parseInt(e.target.value))}
                 >
                   <option value="">---</option>
                   {locations.map((location) => {
@@ -99,7 +105,7 @@ function DropOffModal({
                         value={location.location_id}
                       >
                         {" "}
-                        {location.venu_name}
+                        {location.venue_name}
                       </option>
                     );
                   })}
@@ -110,7 +116,7 @@ function DropOffModal({
           {selected !== "" && !showConfirm && (
             <button
               className={styles.button}
-              onClick={() => setShowConfirm(true)}
+              onClick={handleConfirmation}
             >
               Confirm booking
             </button>
