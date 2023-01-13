@@ -35,6 +35,12 @@ function Navigation({ userID = 1 }) {
         <ul className={styles.link_list}>
           {session ? (
             <>
+              <Link href={`/vehicles`}>
+                <li>
+                  Find a Car
+                  <AiOutlineCar />
+                </li>
+              </Link>
               <Link href={`/user/${userID}`}>
                 <li>
                   Account
