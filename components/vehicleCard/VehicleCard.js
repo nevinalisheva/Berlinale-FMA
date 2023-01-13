@@ -18,6 +18,8 @@ const VehicleCard = (props) => {
     company_id,
   } = props.car;
 
+  const locationName = props.locationName;
+
   return (
     <div className={styles.vehicleListContainer}>
       <div className={styles.vehicleListTopContainer}>
@@ -39,6 +41,11 @@ const VehicleCard = (props) => {
           {vehicle_model && (
             <p>
               <b>Model: </b> {vehicle_model}
+            </p>
+          )}
+          {locationName && (
+            <p>
+              <b>Location: </b> {locationName}
             </p>
           )}
         </div>
