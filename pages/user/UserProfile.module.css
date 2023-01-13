@@ -1,6 +1,5 @@
 .container {
   position: relative;
-  top: 4rem;
   display: flex;
   flex-direction: column;
   width: 90%;
