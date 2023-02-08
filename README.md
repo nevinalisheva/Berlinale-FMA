@@ -16,7 +16,8 @@ yarn dev
 
 ## Dependencies
 
-``` "dependencies": {
+```
+"dependencies": {
     "@next/font": "13.1.1",
     "axios": "^1.2.2",
     "eslint": "8.31.0",
